@@ -1,0 +1,19 @@
+.logoFoodFont {
+    color: #ed272b;
+    font-size: 48px;
+    font-weight: 400;
+    font-family: "Pacifico", cursive;
+    margin-right: 0;
+}
+
+.logoCardFont {
+    color: #ff7c18;
+    font-size: 48px;
+    font-weight: 400;
+    font-family: "Pacifico", cursive;
+    margin-left: 0;
+}
+
+.authBtn {
+    background-color: rgb(234 88 12) !important;
+}
