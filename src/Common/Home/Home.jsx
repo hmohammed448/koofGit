@@ -26,7 +26,6 @@ export default function Home() {
           finalMeal.push(el);
         }
       });
-      console.log(finalMeal);
       setMenuData(meal);
       setLoading(false);
     } catch (error) {
