@@ -7,17 +7,17 @@ import FoodCard from "../Components/FoodCard";
 export default function Home() {
   const [menuData, setMenuData] = useState([]);
   let [loading, setLoading] = useState(true);
-
+  let [queryCount, setQueryCount] = useState(9);
   // FetchedData Function Initialized
   const fetchMenuData = async () => {
     try {
-      const requests = Array.from({ length: 9 }, () =>
+      const requests = Array.from({ length: 45 }, () =>
         fetch("https://www.themealdb.com/api/json/v1/1/random.php").then(
           (response) => response.json()
         )
       );
       const results = await Promise.all(requests);
-      const meal = results.map((el) => el.meals[0]);
+      const meal = results?.slice(0, 45).map((el) => el.meals[0]);
       let finalMeal = [];
       let st = [];
       meal.filter((el, idx) => {
@@ -33,6 +33,10 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  function viewMore() {
+    setQueryCount(queryCount + 9);
+  }
 
   // fetching Menu Data
   useEffect(() => {
@@ -56,7 +60,7 @@ export default function Home() {
             <span className="loader"></span>
           </div>
         ) : (
-          menuData.map((el) => (
+          menuData?.slice(0, queryCount).map((el) => (
             <FoodCard
               data={{
                 key: el.idMeal,
@@ -69,6 +73,16 @@ export default function Home() {
               }}
             />
           ))
+        )}
+
+        {/* if Count is 0 and loading not done don't show View More button */}
+        {!loading && menuData.length > queryCount && (
+          <button
+            className="bg-orange-500 text-white px-8 py-4"
+            onClick={viewMore}
+          >
+            View More
+          </button>
         )}
       </div>
     </>
