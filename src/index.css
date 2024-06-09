@@ -89,6 +89,7 @@ body {
         max-height: 90vh !important;
     }
 
+    .categorySection,
     .strContent {
         -ms-overflow-style: none;
         /* Internet Explorer 10+ */
@@ -96,6 +97,7 @@ body {
         /* Firefox */
     }
 
+    .categorySection::-webkit-scrollbar,
     .strContent::-webkit-scrollbar {
         display: none;
         /* Safari and Chrome */
@@ -175,5 +177,22 @@ body {
 
     .ytFrame {
         height: 240px !important;
+    }
+
+    .categoryCard {
+        min-width: 4rem;
+        height: auto;
+        align-items: center !important;
+        justify-content: center;
+    }
+
+    .categoryCard div img {
+        width: 100% !important;
+        height: 4rem !important;
+    }
+
+    .categoryCardContent {
+        font-size: 12px !important;
+        font-weight: 900;
     }
 }

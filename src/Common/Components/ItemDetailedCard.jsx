@@ -19,10 +19,10 @@ export default function ItemDetailedCard({ data, mealPrice }) {
           />{" "}
         </div>
         <div className="strContent w-1/2 min-w-52 px-8">
-          <div className="text-3xl rounded-t-lg bg-gray-100 pl-2 py-4 text-gray-700 font-extrabold">
+          <div className="text-3xl rounded-t-lg bg-gray-200 pl-2 py-4 text-gray-700 font-extrabold">
             {data?.strMeal}
           </div>
-          <div className="text-xs mt-2 text-gray-500 font-thin max-h-60 overflow-y-scroll scroll-smooth">
+          <div className="text-xs px-2 mt-1 text-gray-500 font-thin max-h-60 overflow-y-scroll scroll-smooth">
             {data?.strInstructions}
           </div>
           <div className="inline-flex items-center mt-4 bg-blue-100 px-2.5 py-0.5 rounded dark:bg-blue-200">
