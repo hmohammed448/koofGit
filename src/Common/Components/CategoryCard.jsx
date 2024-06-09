@@ -22,7 +22,7 @@ export default function CategoryCard({ data }) {
         <div className="w-full mb-2">
           <img
             className="rounded-full w-full h-28 shadow-xl"
-            src={require(`../../assets/${imageName}.jpg`).default}
+            src={(`../src/assets/${imageName}.jpg`)}
             alt="image_description"
           />
         </div>
