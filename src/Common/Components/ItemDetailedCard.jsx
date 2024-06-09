@@ -3,7 +3,7 @@ import paymentImage from "../../assets/paymentImage.svg";
 import trustCart from "../../assets/trustCart.svg";
 
 export default function ItemDetailedCard({ data, mealPrice }) {
-    // console.log(data);
+  // console.log(data);
   return (
     <>
       <div
@@ -78,19 +78,25 @@ export default function ItemDetailedCard({ data, mealPrice }) {
             <img src={paymentImage} alt="" className="w-full" />
           </div>
           {/* Youtube DIV */}
+
           <div className="w-full flex items-center justify-between py-4 flex-col">
-            <div className="text-lg py-4 font-bold text-gray-700">
-              Watch how to Make!
-            </div>
-            <iframe
-              className="ytFrame w-full h-80 rounded-lg"
-              src={`https://www.youtube.com/embed/${data?.strYoutube.slice(32)}`}
-              title="Breakfast Potato Recipe Share if you Like!!"
-              frameBorder="1"
-              allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
+            {data?.strYoutube != "" && (
+              <div className="text-lg py-4 font-bold text-gray-700">
+                Watch how to Make!
+              </div>
+            )}
+
+            {data?.strYoutube != "" && (
+              <iframe
+                className="ytFrame w-full h-80 rounded-lg"
+                src={`https://www.youtube.com/embed/${data?.strYoutube.slice(32)}`}
+                title="Breakfast Potato Recipe Share if you Like!!"
+                frameBorder="0"
+                allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            )}
           </div>
         </div>
       </div>
