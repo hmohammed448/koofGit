@@ -5,7 +5,7 @@ const category = [
   },
   {
     menu_name: "Breakfast",
-    menu_image: "BreakfastMenu",
+    menu_image: "breakfastMenu",
   },
   {
     menu_name: "Chicken",
