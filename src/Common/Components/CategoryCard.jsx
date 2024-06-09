@@ -14,6 +14,24 @@ import starterMenu from "../../assets/starterMenu.jpg";
 import veganMenu from "../../assets/veganMenu.jpg";
 import vegetarianMenu from "../../assets/vegetarianMenu.jpg";
 
+// Create a mapping object
+const images = {
+  beefMenu,
+  breakfastMenu,
+  chickenMenu,
+  dessertMenu,
+  goatMenu,
+  lambMenu,
+  miscellaneousMenu,
+  pastaMenu,
+  porkMenu,
+  seafoodMenu,
+  sideMenu,
+  starterMenu,
+  veganMenu,
+  vegetarianMenu,
+};
+
 export default function CategoryCard({ data }) {
   const { name, imageName } = data;
   return (
@@ -22,7 +40,7 @@ export default function CategoryCard({ data }) {
         <div className="w-full mb-2">
           <img
             className="rounded-full w-full h-28 shadow-xl"
-            src={(`../src/assets/${imageName}.jpg`)}
+            src={images[imageName]}
             alt="image_description"
           />
         </div>

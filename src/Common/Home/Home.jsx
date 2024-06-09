@@ -5,6 +5,7 @@ import FoodCard from "../Components/FoodCard";
 import combinedMenu from "../../API/combinedMenu.js";
 import CategoryCard from "../Components/CategoryCard.jsx";
 import ctList from "../../API/category.js";
+import beefMenu from "../../assets/beefMenu.jpg";
 
 export default function Home() {
   const [menuData, setMenuData] = useState([]);
