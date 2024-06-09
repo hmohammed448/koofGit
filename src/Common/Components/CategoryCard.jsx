@@ -1,6 +1,6 @@
 import React from "react";
 import beefMenu from "../../assets/beefMenu.jpg";
-import breakfastMenu from "../../assets/breakfastMenu.jpg";
+import BreakfastMenu from "../../assets/breakfastMenu.jpg";
 import chickenMenu from "../../assets/chickenMenu.jpg";
 import dessertMenu from "../../assets/dessertMenu.jpg";
 import goatMenu from "../../assets/goatMenu.jpg";
