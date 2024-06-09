@@ -22,7 +22,7 @@ export default function CategoryCard({ data }) {
         <div className="w-full mb-2">
           <img
             className="rounded-full w-full h-28 shadow-xl"
-            src={beefMenu}
+            src={imageName}
             alt="image_description"
           />
         </div>
