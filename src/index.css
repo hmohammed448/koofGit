@@ -172,4 +172,8 @@ body {
     .strContent div:first-child {
         border-radius: 0 !important;
     }
+
+    .ytFrame {
+        height: 240px !important;
+    }
 }

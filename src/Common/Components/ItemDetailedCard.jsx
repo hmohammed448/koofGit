@@ -78,9 +78,12 @@ export default function ItemDetailedCard({ data, mealPrice }) {
             <img src={paymentImage} alt="" className="w-full" />
           </div>
           {/* Youtube DIV */}
-          <div className="w-full flex items-center justify-between py-4">
+          <div className="w-full flex items-center justify-between py-4 flex-col">
+            <div className="text-lg py-4 font-bold text-gray-700">
+              Watch how to Make!
+            </div>
             <iframe
-              className="w-full min-h-56"
+              className="ytFrame w-full h-80 rounded-lg"
               src={`https://www.youtube.com/embed/${data?.strYoutube.slice(32)}`}
               title="Breakfast Potato Recipe Share if you Like!!"
               frameBorder="1"
@@ -88,7 +91,6 @@ export default function ItemDetailedCard({ data, mealPrice }) {
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             ></iframe>
-            {/* <p>{data?.strYoutube}</p> */}
           </div>
         </div>
       </div>
