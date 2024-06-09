@@ -4,7 +4,7 @@ import OrderPrepareVideo from "../../assets/PrepareVideo.mp4";
 export default function BannerCard() {
   return (
     <>
-      <div className="relative p-4 w-full">
+      <div className="relative py-4 w-full">
         {/* Modal content */}
         <div className="banner relative flex py-24 justify-center items-center flex-row flex-wrap bg-white rounded-lg shadow dark:bg-red-600">
           <div className="bannerSideLeft w-1/2 p-4 md:p-5 ">

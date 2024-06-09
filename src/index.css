@@ -82,6 +82,26 @@ body {
     animation: rotation 1.5s linear infinite;
 }
 
+@media screen and (min-width:642px) {
+    .strContent {
+        overflow-y: scroll;
+        min-height: 1px !important;
+        max-height: 90vh !important;
+    }
+
+    .strContent {
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .strContent::-webkit-scrollbar {
+        display: none;
+        /* Safari and Chrome */
+    }
+}
+
 @keyframes rotation {
     0% {
         transform: rotate(0deg);
@@ -115,9 +135,41 @@ body {
     .bannerSideLeft {
         width: 90%;
         margin-bottom: 1rem;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .bannerSideRight {
         width: 90%;
+    }
+
+    .viewItemCard {
+        flex-flow: row wrap;
+    }
+
+    .strImg {
+        width: 100% !important;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .strImg img {
+        max-height: 300px;
+        border: 2px solid rgb(209 213 219);
+        border-bottom: none;
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .strContent {
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .strContent div:first-child {
+        border-radius: 0 !important;
     }
 }

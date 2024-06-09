@@ -68,6 +68,3 @@
 //   "Vegetarian",
 // ];
 
-// import LikeOrderSearch from "../Components/LikeOrderSearch";
-// import BannerCard from "../Components/BannerCard";
-

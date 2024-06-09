@@ -1,26 +1,29 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-export default function FoodCard({ data }) {
+export default function FoodCard(props) {
+  // Object Destructuring
+  const { mealId, mealPrice, mealName, mealImage } = props.data;
+
   return (
     <>
       <div
-        key={data?.key}
-        className="w-full max-w-sm bg-white border border-gray-500 rounded-lg shadow dark:bg-white dark:border-white"
+        key={mealId}
+        className="w-full max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-white dark:border-gray-300"
       >
-        <NavLink to={`pages/${data?.mealId}`}>
+        <NavLink to={`viewItem/${mealId}/${Number(mealPrice)}`}>
           <img
-            className="w-full rounded-t-lg"
-            src={data?.mealImage}
+            className="w-full rounded-t-2xl"
+            src={mealImage}
             alt="product_image"
           />
         </NavLink>
         <div className="px-5 my-4">
           <div href="#">
-            <h5 className="nameEllipses">{data?.mealName}</h5>
+            <h5 className="nameEllipses">{mealName}</h5>
           </div>
 
-          {/*  */}
+          {/* Free Delivery - 15-30 mins */}
           <div className="flex justify-start items-center mb-2">
             <div className="freeDelivery text-gray-500 flex justify-start items-center mr-4">
               <svg
@@ -65,19 +68,15 @@ export default function FoodCard({ data }) {
           {/*  */}
 
           <div className="flex justify-start items-start flex-col gap-4">
-            <div className="text-gray-500 text-xs font-semibold">
-              Tags:
-              <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
-                {data?.mealTags ? data?.mealTags : "#"}
-              </span>
-            </div>
             <div className=" text-gray-500 text-lg font-bold pr-2.5 py-0.5 ">
-              <span className="text-orange-500">Price:</span> ₹250/serving
+              <span className="text-orange-500">Price:</span> $
+              {Number(mealPrice)}
+              /serving
             </div>
           </div>
           <div className="flex items-center justify-between mt-2">
             <span className="text-1xl font-bold text-gray-900 ">
-              {data?.mealArea} Food
+              code : #{mealId}
             </span>
             <a
               href="#"

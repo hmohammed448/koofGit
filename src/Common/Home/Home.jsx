@@ -2,37 +2,39 @@ import React, { useEffect, useState } from "react";
 import LikeOrderSearch from "../Components/LikeOrderSearch";
 import BannerCard from "../Components/BannerCard";
 import FoodCard from "../Components/FoodCard";
-// import Jelly from "../../API/jelly.js";
+import combinedMenu from "../../API/combinedMenu.js";
 
 export default function Home() {
   const [menuData, setMenuData] = useState([]);
   let [loading, setLoading] = useState(true);
   let [queryCount, setQueryCount] = useState(9);
+
   // FetchedData Function Initialized
-  const fetchMenuData = async () => {
-    try {
-      const requests = Array.from({ length: 45 }, () =>
-        fetch("https://www.themealdb.com/api/json/v1/1/random.php").then(
-          (response) => response.json()
-        )
-      );
-      const results = await Promise.all(requests);
-      const meal = results?.slice(0, 45).map((el) => el.meals[0]);
-      let finalMeal = [];
-      let st = [];
-      meal.filter((el, idx) => {
-        if (st.indexOf(el.idMeal) == -1) {
-          st.push(el.idMeal);
-          finalMeal.push(el);
-        }
-      });
-      setMenuData(meal);
-      setLoading(false);
-    } catch (error) {
-      console.log("New Error : ", error);
-      setLoading(false);
-    }
-  };
+  // const fetchMenuData = async () => {
+  // try {
+  //   const requests = Array.from({ length: 45 }, () =>
+  //     fetch("https://www.themealdb.com/api/json/v1/1/random.php").then(
+  //       (response) => response.json()
+  //     )
+  //   );
+  //   const results = await Promise.all(requests);
+  //   const meal = results?.slice(0, 45).map((el) => el.meals[0]);
+  //   let finalMeal = [];
+  //   let st = [];
+  //   meal.filter((el, idx) => {
+  //     if (st.indexOf(el.idMeal) == -1) {
+  //       st.push(el.idMeal);
+  //       finalMeal.push(el);
+  //     }
+  //   });
+  //   setMenuData(meal);
+  //   setLoading(false);
+  // } catch (error) {
+  //   console.log("New Error : ", error);
+  //   setLoading(false);
+  // }
+
+  // };
 
   function viewMore() {
     setQueryCount(queryCount + 9);
@@ -40,7 +42,11 @@ export default function Home() {
 
   // fetching Menu Data
   useEffect(() => {
-    fetchMenuData();
+    // fetchMenuData();
+    if (combinedMenu && combinedMenu.length > queryCount) {
+      setLoading(false);
+      setMenuData(combinedMenu);
+    }
   }, []);
 
   return (
@@ -62,14 +68,12 @@ export default function Home() {
         ) : (
           menuData?.slice(0, queryCount).map((el) => (
             <FoodCard
+              key={el.idMeal}
               data={{
-                key: el.idMeal,
                 mealId: el.idMeal,
-                mealArea: el.strArea,
+                mealPrice: el.strPrice,
                 mealName: el.strMeal,
                 mealImage: el.strMealThumb,
-                mealTags: el.strTags,
-                mealVideo: el.strYoutube,
               }}
             />
           ))
