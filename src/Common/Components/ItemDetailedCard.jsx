@@ -45,6 +45,15 @@ export default function ItemDetailedCard({ data, mealPrice }) {
             </span>
           </div>
           <hr className="border border-2 rounded-xl" />
+          <div className="flex flex-col py-4">
+            <div className="text-lg font-bold text-gray-700">
+              {data?.strArea} Food
+            </div>
+            <div className="text-xs font-thin text-gray-800">
+              Tags : {data?.strTags}
+            </div>
+          </div>
+          <hr className="border border-2 rounded-xl" />
           <div className="flex items-center justify-between py-4">
             <span className="text-xs font-thin text-gray-800">
               Prime members get an extra discount of $60 and FREE shipping.
@@ -89,7 +98,9 @@ export default function ItemDetailedCard({ data, mealPrice }) {
             {data?.strYoutube != "" && (
               <iframe
                 className="ytFrame w-full h-80 rounded-lg"
-                src={`https://www.youtube.com/embed/${data?.strYoutube.slice(32)}`}
+                src={`https://www.youtube.com/embed/${data?.strYoutube.slice(
+                  32
+                )}`}
                 title="Breakfast Potato Recipe Share if you Like!!"
                 frameBorder="0"
                 allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
