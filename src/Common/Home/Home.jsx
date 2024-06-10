@@ -138,7 +138,7 @@ export default function Home() {
           </div>
           <div className="w-full mt-4 text-center">
             {/* if Count is 0 and loading not done don't show View More button */}
-            {!loading && viewDisplay && (
+            {!loading && viewDisplay && menuData.length > queryCount && (
               <button
                 className="bg-orange-500 text-white px-8 py-4"
                 onClick={viewMore}
