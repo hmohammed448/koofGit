@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function LikeOrderSearch() {
+export default function LikeOrderSearch({ onValueChange }) {
+  const [searchItem, setSearchItem] = useState("");
+
+  useEffect(() => {
+    onValueChange(searchItem);
+  }, [searchItem]);
+
   return (
     <>
-      <div className="text-white p-4">
-        <div className="relative hidden md:block">
+      <div className="text-white py-4">
+        <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -28,6 +34,8 @@ export default function LikeOrderSearch() {
             id="search-navbar"
             className="block w-full p-3 ps-10 text-sm text-gray-400 border border-gray-400 rounded-md bg-white focus:ring-gray-400 focus:border-white dark:border-gray-400 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-gray-400 dark:focus:border-gray-500 outline-none"
             placeholder="Search your favourite food..."
+            value={searchItem}
+            onChange={(e) => setSearchItem(e.target.value)}
           />
         </div>
       </div>

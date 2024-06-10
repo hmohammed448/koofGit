@@ -11,7 +11,8 @@ export default function Home() {
   let [loading, setLoading] = useState(true);
   let [queryCount, setQueryCount] = useState(9);
   const [category, setCategory] = useState("All");
-  console.log("Home Page : ", category);
+  const [search, setSearch] = useState("");
+  console.log(menuData);
 
   // FetchedData Function Initialized
   /* const fetchMenuData = async () => {
@@ -53,15 +54,20 @@ export default function Home() {
     }
   }, []);
 
+  function handleSearchValue(value) {
+    setSearch(value);
+  }
+
   return (
     <>
+      {/* FRONT Page RED Banner */}
       <BannerCard />
 
       {/* SEARCH SECTION */}
-      <div className="px-4 mt-8 text-2xl font-extrabold">
+      <div className="px-4 mt-8 text-[3vw] font-extrabold">
         What would you like to order?
+        <LikeOrderSearch onValueChange={handleSearchValue} />
       </div>
-      <LikeOrderSearch />
       <hr className="border border-solid border-gray-300" />
 
       {/* CATEGORY SECTION */}
@@ -78,34 +84,48 @@ export default function Home() {
         <div className=" text-4xl font-extrabold mb-4">Popular Foods</div>
 
         {/* MENU LIST */}
-        <div className="container flex justify-center items-start gap-6 flex-row flex-wrap">
-          {loading ? (
-            <div>
-              <span className="loader"></span>
-            </div>
-          ) : (
-            menuData?.slice(0, queryCount).map((el) => (
-              <FoodCard
-                key={el.idMeal}
-                data={{
-                  mealId: el.idMeal,
-                  mealPrice: el.strPrice,
-                  mealName: el.strMeal,
-                  mealImage: el.strMealThumb,
-                }}
-              />
-            ))
-          )}
-
-          {/* if Count is 0 and loading not done don't show View More button */}
-          {!loading && menuData.length > queryCount && (
-            <button
-              className="bg-orange-500 text-white px-8 py-4"
-              onClick={viewMore}
-            >
-              View More
-            </button>
-          )}
+        <div className="w-full">
+          <div className="container flex justify-center items-start gap-6 flex-row flex-wrap">
+            {loading ? (
+              <div>
+                <span className="loader"></span>
+              </div>
+            ) : (
+              menuData
+                ?.filter((item) => {
+                  if (search.toLowerCase() == "") {
+                    return item;
+                  } else {
+                    return item.strMeal
+                      .toLowerCase()
+                      .includes(search.toLowerCase());
+                  }
+                })
+                ?.slice(0, queryCount)
+                .map((el) => (
+                  <FoodCard
+                    key={el.idMeal}
+                    data={{
+                      mealId: el.idMeal,
+                      mealPrice: el.strPrice,
+                      mealName: el.strMeal,
+                      mealImage: el.strMealThumb,
+                    }}
+                  />
+                ))
+            )}
+          </div>
+          <div className="w-full mt-4 text-center">
+            {/* if Count is 0 and loading not done don't show View More button */}
+            {!loading && menuData.length > queryCount && (
+              <button
+                className="bg-orange-500 text-white px-8 py-4"
+                onClick={viewMore}
+              >
+                View More
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </>

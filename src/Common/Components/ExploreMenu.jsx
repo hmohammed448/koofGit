@@ -33,7 +33,7 @@ const images = {
 };
 
 export default function ExploreMenu({ ctList, category, setCategory }) {
-  console.log("Exploremenu set name : ", category);
+  // console.log("Exploremenu set name : ", category);
 
   return (
     <>
