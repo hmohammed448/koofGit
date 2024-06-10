@@ -74,41 +74,39 @@ export default function Home() {
       <hr className="border border-solid border-gray-300" />
 
       {/* MENU SECTION */}
-      <div
-        id="mainMenu"
-        className="bg-gray-200 rounded-t-lg p-4 mt-4 text-4xl font-extrabold"
-      >
-        Popular Foods
-      </div>
-      {/* MENU LIST */}
-      <div className="container flex justify-center items-start gap-6 flex-row flex-wrap mb-8 bg-gray-200 rounded-b-lg pb-2">
-        {loading ? (
-          <div>
-            <span className="loader"></span>
-          </div>
-        ) : (
-          menuData?.slice(0, queryCount).map((el) => (
-            <FoodCard
-              key={el.idMeal}
-              data={{
-                mealId: el.idMeal,
-                mealPrice: el.strPrice,
-                mealName: el.strMeal,
-                mealImage: el.strMealThumb,
-              }}
-            />
-          ))
-        )}
+      <div id="mainMenu" className="bg-gray-200 rounded-lg p-4 my-4">
+        <div className=" text-4xl font-extrabold mb-4">Popular Foods</div>
 
-        {/* if Count is 0 and loading not done don't show View More button */}
-        {!loading && menuData.length > queryCount && (
-          <button
-            className="bg-orange-500 text-white px-8 py-4"
-            onClick={viewMore}
-          >
-            View More
-          </button>
-        )}
+        {/* MENU LIST */}
+        <div className="container flex justify-center items-start gap-6 flex-row flex-wrap">
+          {loading ? (
+            <div>
+              <span className="loader"></span>
+            </div>
+          ) : (
+            menuData?.slice(0, queryCount).map((el) => (
+              <FoodCard
+                key={el.idMeal}
+                data={{
+                  mealId: el.idMeal,
+                  mealPrice: el.strPrice,
+                  mealName: el.strMeal,
+                  mealImage: el.strMealThumb,
+                }}
+              />
+            ))
+          )}
+
+          {/* if Count is 0 and loading not done don't show View More button */}
+          {!loading && menuData.length > queryCount && (
+            <button
+              className="bg-orange-500 text-white px-8 py-4"
+              onClick={viewMore}
+            >
+              View More
+            </button>
+          )}
+        </div>
       </div>
     </>
   );
