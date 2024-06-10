@@ -3,14 +3,15 @@ import LikeOrderSearch from "../Components/LikeOrderSearch";
 import BannerCard from "../Components/BannerCard";
 import FoodCard from "../Components/FoodCard";
 import combinedMenu from "../../API/combinedMenu.js";
-import CategoryCard from "../Components/CategoryCard.jsx";
 import ctList from "../../API/category.js";
+import ExploreMenu from "../Components/ExploreMenu.jsx";
 
 export default function Home() {
   const [menuData, setMenuData] = useState([]);
   let [loading, setLoading] = useState(true);
   let [queryCount, setQueryCount] = useState(9);
-  const [categoryList, setCategoryList] = useState("All");
+  const [category, setCategory] = useState("All");
+  console.log("Home Page : ", category);
 
   // FetchedData Function Initialized
   /* const fetchMenuData = async () => {
@@ -64,17 +65,11 @@ export default function Home() {
       <hr className="border border-solid border-gray-300" />
 
       {/* CATEGORY SECTION */}
-      <div className="categorySection px-4 my-4 flex justify-start items-center overflow-x-scroll scroll-smooth whitespace-nowrap gap-8">
-        {ctList.map(
-          (el, idx) => (
-            <CategoryCard
-              key={idx}
-              data={{ name: el.menu_name, imageName: el.menu_image }}
-            />
-          )
-          // console.log(el)
-        )}
-      </div>
+      <ExploreMenu
+        ctList={ctList}
+        category={category}
+        setCategory={setCategory}
+      />
 
       <hr className="border border-solid border-gray-300" />
 
