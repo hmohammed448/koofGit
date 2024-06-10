@@ -30,7 +30,7 @@ export default function ViewItem() {
   return (
     <>
       {loading ? (
-        <div className="loader"></div>
+        <div className="loader mt-24"></div>
       ) : (
         <ItemDetailedCard data={menuDetails} mealPrice={price} />
       )}

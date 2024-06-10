@@ -76,7 +76,7 @@ export default function FoodCard(props) {
           </div>
           <div className="flex items-center justify-between mt-2">
             <span
-              className="text-xs absolute font-bold text-gray-900 px-2 py-1"
+              className="foodCodeSpan text-xs absolute font-bold text-gray-900 px-2 py-1"
               style={{
                 border: "none",
                 borderRadius: "0px 5px 5px 0",

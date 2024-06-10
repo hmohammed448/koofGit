@@ -12,7 +12,6 @@ export default function Home() {
   let [queryCount, setQueryCount] = useState(9);
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
-  console.log(menuData);
 
   // FetchedData Function Initialized
   /* const fetchMenuData = async () => {
@@ -64,7 +63,7 @@ export default function Home() {
       <BannerCard />
 
       {/* SEARCH SECTION */}
-      <div className="px-4 mt-8 text-[3vw] font-extrabold">
+      <div id="mainMenu" className="px-4 mt-8 text-[3vw] font-extrabold">
         What would you like to order?
         <LikeOrderSearch onValueChange={handleSearchValue} />
       </div>
@@ -80,7 +79,7 @@ export default function Home() {
       <hr className="border border-solid border-gray-300" />
 
       {/* MENU SECTION */}
-      <div id="mainMenu" className="bg-gray-200 rounded-lg p-4 my-4">
+      <div className="mainMenu bg-gray-200 rounded-lg p-4 my-4">
         <div className=" text-4xl font-extrabold mb-4">Popular Foods</div>
 
         {/* MENU LIST */}
@@ -92,6 +91,11 @@ export default function Home() {
               </div>
             ) : (
               menuData
+                ?.filter((catFilter) =>
+                  category == "All"
+                    ? catFilter
+                    : catFilter.strCategory.includes(category)
+                )
                 ?.filter((item) => {
                   if (search.toLowerCase() == "") {
                     return item;

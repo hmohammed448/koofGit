@@ -8,7 +8,7 @@ export default function ItemDetailedCard({ data, mealPrice }) {
     <>
       <div
         id={data?.idMeal}
-        className="viewItemCard w-full flex justify-between items-start mb-8 bg-white"
+        className="mt-8 viewItemCard w-full flex justify-between items-start mb-8 bg-white"
       >
         <div className="strImg w-1/2 px-8">
           <img

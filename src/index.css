@@ -6,6 +6,11 @@ html {
     scroll-behavior: smooth !important;
 }
 
+html::-webkit-scrollbar {
+    scroll-behavior: smooth !important;
+    /* safari and chrome */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -100,6 +105,10 @@ body {
     transition: all 0.3s ease-out;
 }
 
+.mobDisBlock {
+    display: none !important;
+}
+
 @media screen and (min-width:642px) {
     .strContent {
         overflow-y: scroll;
@@ -120,6 +129,7 @@ body {
         display: none;
         /* Safari and Chrome */
     }
+
 }
 
 @keyframes rotation {
@@ -144,12 +154,23 @@ body {
 
 
 @media screen and (max-width:641px) {
+
+    .logoFoodFont,
+    .logoCardFont {
+        font-size: 38px !important;
+        margin-left: 1px !important;
+        margin-top: 5px !important;
+    }
+
     .container {
         max-width: 100% !important;
     }
 
     .banner {
         flex-flow: column nowrap !important;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+
     }
 
     .bannerSideLeft {
@@ -214,8 +235,80 @@ body {
         font-weight: 900;
     }
 
-    #mainMenu {
+    .mainMenu {
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
+    }
+
+    .mainMenu a img {
+        max-height: 25vh !important;
+        object-fit: cover !important;
+    }
+
+    nav div {
+        position: relative !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .navbarAuthentication {
+        display: flex !important;
+        align-items: flex-end;
+        flex-direction: column-reverse;
+        row-gap: 1rem !important;
+        width: 100% !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    .authBtn {
+        width: max-content !important;
+        margin: 0 !important;
+        font-weight: 800 !important;
+        font-size: 0.675rem !important;
+        letter-spacing: 2px !important;
+        line-height: 1.5rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    ul {
+        margin-top: 0 !important;
+        padding-left: 0.5rem !important;
+        flex-direction: column !important;
+    }
+
+    .navbarLogoSection {
+        padding-left: 1rem !important;
+    }
+
+    .mobDisNone {
+        display: none !important;
+    }
+
+    .mobDisBlock {
+        display: block !important;
+        margin-top: 0.5rem !important;
+    }
+
+    #nabarMobileToggler {
+        position: absolute;
+        top: -5.8vh !important;
+        right: 2vh !important;
+        border: 1px solid red !important;
+    }
+
+    nav {
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 18px 30px 20px !important;
+    }
+
+    .foodCodeSpan {
+        border-radius: 5px 0px 0px 5px !important;
+        top: 20px !important;
+        right: 0px !important;
+        left: auto !important;
     }
 }

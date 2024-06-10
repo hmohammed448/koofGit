@@ -4,15 +4,15 @@ import OrderPrepareVideo from "../../assets/PrepareVideo.mp4";
 export default function BannerCard() {
   return (
     <>
-      <div className="relative py-4 w-full">
+      <div className="relative py-4 w-full mt-8">
         {/* Modal content */}
         <div className="banner relative flex py-24 justify-center items-center flex-row flex-wrap bg-white rounded-lg shadow dark:bg-red-600">
           <div className="bannerSideLeft w-1/2 p-4 md:p-5 ">
             <h1
-              className="mb-8 text-6xl font-bold text-gray-900 dark:text-white"
+              className="mb-8 font-bold text-gray-900 dark:text-white"
               style={{ fontFamily: "'Courgette',cursive" }}
             >
-              Are You Starving?
+              <span className="text-9xl">A</span><span className="text-6xl" style={{fontFamily: "'Pacifico', cursive"}}>re You Starving?</span>
             </h1>
             <p className="text-white dark:text-white mb-6">
               Within a few clicks, find meals that are accessible near you...
