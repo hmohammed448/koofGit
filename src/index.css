@@ -85,12 +85,9 @@ body {
 .activeCategory {
     border: 3px solid orange !important;
     transform: scale(0.9) !important;
-    transition: 0.5s ease-in !important;
-}
-
-.nonActiveCategory {
+    transition: all 0.3s ease-in !important;
     border-radius: 50% !important;
-    border: none !important;
+    filter: drop-shadow(0px 0px 1rem orange);
 }
 
 .categoryCard div img {
@@ -100,7 +97,7 @@ body {
     --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    transition: all 0.5s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 @media screen and (min-width:642px) {
@@ -207,9 +204,6 @@ body {
         justify-content: center;
     }
 
-    /* .categoryCard div{
-    border-radius: ;
-} */
     .categoryCard div img {
         width: 100% !important;
         height: 4rem !important;

@@ -50,7 +50,7 @@ export default function ExploreMenu({ ctList, category, setCategory }) {
               }
               className="cursor-pointer categoryCard min-w-28 w-28 h-auto flex flex-col justify-center items-center"
             >
-              <div className="w-full mb-2">
+              <div className="w-full mb-2 pt-2">
                 <img
                   className={category === el.menu_name ? "activeCategory" : ""}
                   src={images[el.menu_image]}
