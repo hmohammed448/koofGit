@@ -8,7 +8,7 @@ export default function ItemDetailedCard({ data, mealPrice }) {
     <>
       <div
         id={data?.idMeal}
-        className="mt-8 viewItemCard w-full flex justify-between items-start mb-8 bg-white"
+        className="viewItemCard w-full mt-8 flex justify-between items-start mb-8 bg-white"
       >
         <div className="strImg w-1/2 px-8">
           <img
@@ -44,22 +44,25 @@ export default function ItemDetailedCard({ data, mealPrice }) {
               ${mealPrice}
             </span>
           </div>
-          <hr className="border border-2 rounded-xl" />
+          <hr className="border-2 rounded-xl" />
           <div className="flex flex-col py-4">
             <div className="text-lg font-bold text-gray-700">
               {data?.strArea} Food
             </div>
-            <div className="text-xs font-thin text-gray-800">
+            <div
+              className="text-xs font-thin text-gray-800"
+              style={{ wordBreak: "break-word" }}
+            >
               Tags : {data?.strTags}
             </div>
           </div>
-          <hr className="border border-2 rounded-xl" />
+          <hr className="border-2 rounded-xl" />
           <div className="flex items-center justify-between py-4">
             <span className="text-xs font-thin text-gray-800">
               Prime members get an extra discount of $60 and FREE shipping.
             </span>
           </div>
-          <hr className="border border-2 rounded-xl" />
+          <hr className="border-2 rounded-xl" />
           <div className="flex items-center justify-between py-4">
             <button className="text-white tracking-widest py-4 bg-orange-700 focus:ring-0 focus:outline-none focus:ring-orange-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
               ADD TO CART

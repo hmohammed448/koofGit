@@ -7,7 +7,6 @@ export default function Navbar2() {
   function toggleNavbarLinks() {
     setNavToggle(!navToggle);
   }
-  console.log(navToggle);
 
   return (
     <>

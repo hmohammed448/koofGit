@@ -1,5 +1,6 @@
 import React from "react";
 import OrderPrepareVideo from "../../assets/PrepareVideo.mp4";
+import OrderPrepareGIF from "../../assets/PrepareGIF.gif";
 
 export default function BannerCard() {
   return (
@@ -31,10 +32,11 @@ export default function BannerCard() {
             </div>
           </div>
           <div className="bannerSideRight w-96 flex justify-center items-center videoBox">
-            <video className="w-96" autoPlay loop muted>
+            {/* <video className="w-96" autoPlay loop muted>
               <source src={OrderPrepareVideo} type="video/mp4" />
               Your browser does not support the video tag.
-            </video>
+            </video> */}
+            <img src={OrderPrepareGIF} alt="prepareOrder" />
           </div>
         </div>
       </div>
