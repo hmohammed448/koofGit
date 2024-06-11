@@ -12,10 +12,10 @@ export default function Home() {
   let [queryCount, setQueryCount] = useState(9);
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
-  const [hideValue, setHideValue] = useState(0);
-  const [oldLeft, setOldLeft] = useState(0);
-  const [leftItems, setleftItems] = useState(0);
-  const [viewDisplay, setViewDisplay] = useState(true);
+  // const [hideValue, setHideValue] = useState(0);
+  // const [oldLeft, setOldLeft] = useState(0);
+  // const [leftItems, setleftItems] = useState(0);
+  // const [viewDisplay, setViewDisplay] = useState(true);
 
   // FetchedData Function Initialized
   /* const fetchMenuData = async () => {
@@ -43,9 +43,11 @@ export default function Home() {
     }
   }; */
 
+  // let queryCount = 9;
   // View More Function
   function viewMore() {
     setQueryCount(queryCount + 9);
+    // queryCount += 9;
   }
 
   // useEffect fetching Menu Data
@@ -62,9 +64,13 @@ export default function Home() {
 
   // Filtered Data here only
   const filteredMenuData = menuData
-    ?.filter((catFilter) =>
-      category == "All" ? catFilter : catFilter.strCategory.includes(category)
-    )
+    ?.filter((catFilter) => {
+      if (category == "All") {
+        return catFilter;
+      } else {
+        return catFilter.strCategory.includes(category);
+      }
+    })
     ?.filter((item) => {
       if (search.toLowerCase() == "") {
         return item;
@@ -72,19 +78,6 @@ export default function Home() {
         return item.strMeal.toLowerCase().includes(search.toLowerCase());
       }
     });
-
-  // Set Filtered Data Count
-  useEffect(() => {
-    setleftItems(filteredMenuData.length - queryCount);
-  }, [filteredMenuData, queryCount]);
-
-  useEffect(() => {
-    if (leftItems <= 0) {
-      setViewDisplay(false);
-    } else {
-      setViewDisplay(true);
-    }
-  }, [leftItems]);
 
   return (
     <>
@@ -138,13 +131,15 @@ export default function Home() {
           </div>
           <div className="w-full mt-4 text-center">
             {/* if Count is 0 and loading not done don't show View More button */}
-            {!loading && viewDisplay && menuData.length > queryCount && (
+            {!loading && filteredMenuData.length >= queryCount ? (
               <button
                 className="bg-orange-500 text-white px-8 py-4"
                 onClick={viewMore}
               >
                 View More
               </button>
+            ) : (
+              <></>
             )}
           </div>
         </div>
