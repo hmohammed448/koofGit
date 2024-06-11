@@ -12,10 +12,6 @@ export default function Home() {
   let [queryCount, setQueryCount] = useState(9);
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
-  // const [hideValue, setHideValue] = useState(0);
-  // const [oldLeft, setOldLeft] = useState(0);
-  // const [leftItems, setleftItems] = useState(0);
-  // const [viewDisplay, setViewDisplay] = useState(true);
 
   // FetchedData Function Initialized
   /* const fetchMenuData = async () => {
@@ -43,11 +39,9 @@ export default function Home() {
     }
   }; */
 
-  // let queryCount = 9;
   // View More Function
   function viewMore() {
     setQueryCount(queryCount + 9);
-    // queryCount += 9;
   }
 
   // useEffect fetching Menu Data
