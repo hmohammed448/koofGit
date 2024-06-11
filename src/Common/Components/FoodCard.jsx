@@ -3,12 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function FoodCard(props) {
   // Object Destructuring
-  const { mealId, mealPrice, mealName, mealImage } = props.data;
+  const { key, mealId, mealPrice, mealName, mealImage } = props.data;
 
   return (
     <>
       <div
-        key={mealId}
+        key={key}
         className="w-full relative max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-white dark:border-gray-300"
       >
         <NavLink to={`viewItem/${mealId}/${Number(mealPrice)}`}>
