@@ -18,6 +18,12 @@ export default function Cart() {
       return;
     }
   }
+
+  // load on first render
+  useEffect(() => {
+    getLocalStorage();
+  }, []);
+
   // calculateBill
   function calculateBill() {
     let total = localData
@@ -25,16 +31,20 @@ export default function Cart() {
       .reduce((accum, curr) => Number(accum) + Number(curr), 0);
     setTotalBill(total);
   }
-  // load on first render
+
+  // localData updates render below
   useEffect(() => {
-    getLocalStorage();
-    setTableFoot(true);
-  }, []);
+    setTimeout(() => {
+      if (localData.length > 0) {
+        setTableFoot(true);
+      } else {
+        setTableFoot(false);
+      }
+      calculateBill();
+    }, 0);
+  }, [localData]);
 
-  setTimeout(() => {
-    calculateBill();
-  }, 0);
-
+  // Set updated data (Items removed)
   function setItemRemoved(value) {
     let filteredData = localData.filter((el) => el.id !== value && el);
     setLocalData(filteredData);

@@ -109,13 +109,6 @@ body {
     display: none !important;
 }
 
-
-
-/* .transNone {
-    opacity: 0 !important;
-    background-color: antiquewhite;
-} */
-
 @media screen and (min-width:642px) {
     .strContent {
         overflow-y: scroll;
@@ -333,9 +326,7 @@ body {
         max-width: 3rem !important;
     }
 
-    .transBlock {
-        opacity: 1 !important;
-        transition: opacity 0.3s linear !important;
-        background-color: antiquewhite;
+    #navbar-sticky {
+        background-color: rgb(248, 232, 202);
     }
 }

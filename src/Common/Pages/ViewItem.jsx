@@ -38,18 +38,18 @@ export default function ViewItem() {
       image_url: menuDetails?.strMealThumb,
     };
 
-    // if (!getLocalCartInfo) {
-    //   localStorage.setItem("localCart", JSON.stringify([newObj]));
-    //   alert("Item Added to Cart!");
-    //   return;
-    // } else {
-    //   let destructData = [...getLocalCartInfo, newObj];
-    //   localStorage.setItem("localCart", JSON.stringify(destructData));
-    //   alert("Item Added to Cart!");
-    //   return;
-    // }
-    console.log("Get local :", getLocalCartInfo);
-    // console.log(newObj);
+    if (!getLocalCartInfo) {
+      localStorage.setItem("localCart", JSON.stringify([newObj]));
+      console.log("Get local :", getLocalCartInfo);
+      alert("Item Added to Cart!");
+      return;
+    } else {
+      let destructData = [...getLocalCartInfo, newObj];
+      localStorage.setItem("localCart", JSON.stringify(destructData));
+      console.log("Get local :", getLocalCartInfo);
+      alert("Item Added to Cart!");
+      return;
+    }
   }
 
   return (
