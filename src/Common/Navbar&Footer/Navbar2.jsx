@@ -16,12 +16,12 @@ export default function Navbar2() {
   }
   useEffect(() => {
     if (navToggle) {
-      document.addEventListener("mouseout", handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     } else {
-      document.removeEventListener("mouseout", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     }
     return () => {
-      document.removeEventListener("mouseout", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [navToggle]);
 
