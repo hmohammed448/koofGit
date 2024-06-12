@@ -1,11 +1,10 @@
 import React from "react";
-import OrderPrepareVideo from "../../assets/PrepareVideo.mp4";
 import OrderPrepareGIF from "../../assets/PrepareGIF.gif";
 
 export default function BannerCard() {
   return (
     <>
-      <div className="relative py-4 w-full mt-8">
+      <div className="relative py-4 w-full mt-4" data-aos="fade-up">
         {/* Modal content */}
         <div className="banner relative flex py-24 justify-center items-center flex-row flex-wrap bg-white rounded-lg shadow dark:bg-red-600">
           <div className="bannerSideLeft w-1/2 p-4 md:p-5 ">
@@ -13,7 +12,13 @@ export default function BannerCard() {
               className="mb-8 font-bold text-gray-900 dark:text-white"
               style={{ fontFamily: "'Courgette',cursive" }}
             >
-              <span className="text-9xl">A</span><span className="text-6xl" style={{fontFamily: "'Pacifico', cursive"}}>re You Starving?</span>
+              <span className="fontOne text-9xl">A</span>
+              <span
+                className="fontTwo text-6xl"
+                style={{ fontFamily: "'Pacifico', cursive" }}
+              >
+                re You Starving?
+              </span>
             </h1>
             <p className="text-white dark:text-white mb-6">
               Within a few clicks, find meals that are accessible near you...
@@ -32,10 +37,6 @@ export default function BannerCard() {
             </div>
           </div>
           <div className="bannerSideRight w-96 flex justify-center items-center videoBox">
-            {/* <video className="w-96" autoPlay loop muted>
-              <source src={OrderPrepareVideo} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video> */}
             <img src={OrderPrepareGIF} alt="prepareOrder" />
           </div>
         </div>

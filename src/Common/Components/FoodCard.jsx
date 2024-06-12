@@ -34,6 +34,7 @@ export default function FoodCard({ data }) {
       <div
         key={key}
         className="w-full relative max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-white dark:border-gray-300"
+        data-aos="zoom-in"
       >
         <NavLink to={`viewItem/${mealId}/${Number(mealPrice)}`}>
           <img

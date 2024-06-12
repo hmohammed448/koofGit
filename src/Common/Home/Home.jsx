@@ -4,7 +4,6 @@ import BannerCard from "../Components/BannerCard";
 import ctList from "../../API/category.js";
 import ExploreMenu from "../Components/ExploreMenu.jsx";
 import MenuList from "../Components/ExploreMenu/MenuList.jsx";
-// import cartItemsJS from "../../API/cartItemsJS.js";
 
 export default function Home() {
   const [apiMenuData, setAPIMenuData] = useState([]);
@@ -68,7 +67,12 @@ export default function Home() {
       <BannerCard />
 
       {/* SEARCH SECTION */}
-      <div id="mainMenu" className="px-4 mt-8 text-[3vw] font-extrabold">
+      <div
+        id="mainMenu"
+        className="px-4 mt-8 text-[3vw] font-extrabold"
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
+      >
         What would you like to order?
         <LikeOrderSearch onValueChange={handleSearchValue} />
       </div>

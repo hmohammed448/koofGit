@@ -33,12 +33,15 @@ const images = {
 };
 
 export default function ExploreMenu({ ctList, category, setCategory }) {
-  // console.log("Exploremenu set name : ", category);
 
   return (
     <>
       {/* CATEGORY SECTION */}
-      <div className="categorySection px-4 my-4 flex justify-start items-center overflow-x-scroll scroll-smooth whitespace-nowrap gap-8">
+      <div
+        className="categorySection px-4 my-4 flex justify-start items-center overflow-x-scroll scroll-smooth whitespace-nowrap gap-8"
+        data-aos="fade-left"
+        data-aos-anchor-placement="top-bottom"
+      >
         {ctList.map((el, index) => {
           return (
             <div

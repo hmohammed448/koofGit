@@ -55,6 +55,7 @@ export default function Cart() {
       <div
         className="relative overflow-x-auto shadow-2xl sm:rounded-lg my-8 mx-auto w-3/4"
         id="catItemTable"
+        data-aos="zoom-in"
       >
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           {/* TABLE HEAD */}

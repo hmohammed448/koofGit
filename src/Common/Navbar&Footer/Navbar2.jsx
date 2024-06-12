@@ -121,7 +121,7 @@ export default function Navbar2() {
               } w-full md:flex md:w-auto md:order-1`}
             id="navbar-sticky"
           >
-            <ul className="flex flex-row p-4 md:p-0 font-medium">
+            <ul className="flex flex-row p-4 md:p-0 font-medium" >
               <li>
                 <NavLink
                   to="/"
