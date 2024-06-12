@@ -6,6 +6,8 @@ export default function MenuList({
   loading,
   queryCount,
   setQueryCount,
+  cartItem,
+  setCartItem,
 }) {
   return (
     <>
@@ -27,6 +29,8 @@ export default function MenuList({
                       mealName: el.strMeal,
                       mealImage: el.strMealThumb,
                     }}
+                    cartItem={cartItem}
+                    setCartItem={setCartItem}
                   />
                 </>
               );
@@ -38,7 +42,6 @@ export default function MenuList({
           {!loading && filteredMenuData.length >= queryCount ? (
             <button
               className="bg-orange-500 text-white px-8 py-4"
-              // onClick={viewMore}
               onClick={() => {
                 setQueryCount(queryCount + 9);
               }}

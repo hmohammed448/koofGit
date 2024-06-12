@@ -4,13 +4,16 @@ import BannerCard from "../Components/BannerCard";
 import ctList from "../../API/category.js";
 import ExploreMenu from "../Components/ExploreMenu.jsx";
 import MenuList from "../Components/ExploreMenu/MenuList.jsx";
+import cartItemsJS from "../../API/cartItemsJS.js";
 
 export default function Home() {
   const [apiMenuData, setAPIMenuData] = useState([]);
-  let [loading, setLoading] = useState(true);
-  let [queryCount, setQueryCount] = useState(9);
+  const [loading, setLoading] = useState(true);
+  const [queryCount, setQueryCount] = useState(9);
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const [cartItem, setCartItem] = useState([...cartItemsJS]);
+  console.log("CartItem : ", cartItem);
 
   // FetchedData Function Initialized
   const fetchMenuData = async () => {
@@ -96,6 +99,8 @@ export default function Home() {
           loading={loading}
           queryCount={queryCount}
           setQueryCount={setQueryCount}
+          cartItem={cartItem}
+          setCartItem={setCartItem}
         />
       </div>
     </>

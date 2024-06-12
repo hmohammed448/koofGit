@@ -10,7 +10,7 @@ import {
 import Layout from "./Layout";
 import Home from "./Common/Home/Home";
 import Reviews from "./Common/Reviews/Reviews";
-import Cart from "./Common/Cart/Cart";
+import Cart from "./Common/Pages/Cart";
 import ViewItem from "./Common/Pages/ViewItem";
 
 const router = createBrowserRouter(

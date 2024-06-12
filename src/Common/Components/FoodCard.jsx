@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-export default function FoodCard(props) {
+export default function FoodCard({ data, cartItem, setCartItem }) {
   // Object Destructuring
-  const { key, mealId, mealPrice, mealName, mealImage } = props.data;
+  const { key, mealId, mealPrice, mealName, mealImage } = data;
 
   return (
     <>
@@ -87,12 +87,23 @@ export default function FoodCard(props) {
             >
               Food code : #{mealId}
             </span>
-            <a
-              href="#"
+            <button
               className="text-white bg-red-700 hover:bg-red-800 focus:ring-0 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+              onClick={() =>
+                setCartItem((e) => [
+                  ...e, // spreading previous item
+                  {
+                    // adding new Item
+                    mealNaam: mealName,
+                    mealImg: mealImage,
+                    mealPrc: mealPrice,
+                    mealQty: 1,
+                  },
+                ])
+              }
             >
               Add to Cart
-            </a>
+            </button>
           </div>
         </div>
       </div>

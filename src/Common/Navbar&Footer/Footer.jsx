@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Components/Button";
 
 export default function Footer() {
   return (
@@ -151,12 +152,11 @@ export default function Footer() {
                         placeholder="Enter your email"
                         required
                       />
-                      <button
-                        type="submit"
-                        className="text-white absolute end-2.5 bottom-2.5 bg-orange-700 hover:bg-orange-600 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 "
-                      >
-                        Subscribe
-                      </button>
+                      <Button
+                        rot={"#"}
+                        addClass={"absolute end-2.5 bottom-2.5 bg-orange-500"}
+                        btnName={"Subscribe"}
+                      />
                     </div>
                   </li>
                 </ul>
