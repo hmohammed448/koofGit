@@ -1,9 +1,33 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Button from "../Components/Button";
 
-export default function FoodCard({ data, cartItem, setCartItem }) {
+export default function FoodCard({ data }) {
   // Object Destructuring
   const { key, mealId, mealPrice, mealName, mealImage } = data;
+
+  function setToLocalStorage() {
+    const getLocalCartInfo = JSON.parse(localStorage.getItem("localCart"));
+
+    // New object to push
+    const newObj = {
+      id: mealId,
+      price: mealPrice,
+      name: mealName,
+      image_url: mealImage,
+    };
+
+    if (!getLocalCartInfo) {
+      localStorage.setItem("localCart", JSON.stringify([newObj]));
+      alert("Item Added to Cart!");
+      return;
+    } else {
+      let destructData = [...getLocalCartInfo, newObj];
+      localStorage.setItem("localCart", JSON.stringify(destructData));
+      alert("Item Added to Cart!");
+      return;
+    }
+  }
 
   return (
     <>
@@ -87,23 +111,19 @@ export default function FoodCard({ data, cartItem, setCartItem }) {
             >
               Food code : #{mealId}
             </span>
+            {/* ADD TO CART BUTTON */}
             <button
-              className="text-white bg-red-700 hover:bg-red-800 focus:ring-0 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-              onClick={() =>
-                setCartItem((e) => [
-                  ...e, // spreading previous item
-                  {
-                    // adding new Item
-                    mealNaam: mealName,
-                    mealImg: mealImage,
-                    mealPrc: mealPrice,
-                    mealQty: 1,
-                  },
-                ])
-              }
+              className="text-white bg-red-600 hover:bg-red-700 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              onClick={setToLocalStorage}
             >
               Add to Cart
             </button>
+            {/* VIEW CART BUTTON */}
+            <Button
+              rot={"cart"}
+              addClass={"bg-orange-500"}
+              btnName={"ViewCart"}
+            />
           </div>
         </div>
       </div>

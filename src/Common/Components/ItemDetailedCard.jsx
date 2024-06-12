@@ -2,8 +2,11 @@ import React from "react";
 import paymentImage from "../../assets/paymentImage.svg";
 import trustCart from "../../assets/trustCart.svg";
 
-export default function ItemDetailedCard({ data, mealPrice }) {
-  // console.log(data);
+export default function ItemDetailedCard({
+  data,
+  mealPrice,
+  handleAddingtoCart,
+}) {
   return (
     <>
       <div
@@ -64,12 +67,11 @@ export default function ItemDetailedCard({ data, mealPrice }) {
           </div>
           <hr className="border-2 rounded-xl" />
           <div className="flex items-center justify-between py-4">
-            <button className="text-white tracking-widest py-4 bg-orange-700 focus:ring-0 focus:outline-none focus:ring-orange-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+            <button
+              className="text-white tracking-widest py-4 bg-red-700 font-bold rounded-lg text-sm px-5 text-center dark:bg-red-600 dark:hover:bg-red-700"
+              onClick={() => handleAddingtoCart(data.idMeal)}
+            >
               ADD TO CART
-            </button>
-            <button className="text-white bg-orange-700 focus:ring-0 focus:outline-none focus:ring-orange-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
-              <span className="text-2xl align-middle mr-2">♡︎</span>
-              <span className="tracking-widest">WHISHLIST</span>
             </button>
           </div>
           <div className="flex items-center justify-between py-4">

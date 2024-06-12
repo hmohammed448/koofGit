@@ -1,44 +1,44 @@
 export default [
     {
-        "mealNaam": "Burger",
-        "mealImg": "https://img.freepik.com/free-photo/beef-burgers-with-ingredients_141793-16643.jpg?w=900",
-        "mealPrc": 150,
-        "mealQty": 3
+        "id": 3,
+        "price": 150,
+        "name": "Burger",
+        "image_url": "https://img.freepik.com/free-photo/beef-burgers-with-ingredients_141793-16643.jpg?w=900",
     },
     {
-        "mealNaam": "Sushi",
-        "mealImg": "https://img.freepik.com/free-photo/side-view-mix-sushi-rolls-tray-with-ginger-wasabi_141793-14242.jpg?w=900",
-        "mealPrc": 350,
-        "mealQty": 6
+        "id": 6,
+        "price": 350,
+        "name": "Sushi",
+        "image_url": "https://img.freepik.com/free-photo/side-view-mix-sushi-rolls-tray-with-ginger-wasabi_141793-14242.jpg?w=900",
     },
     {
-        "mealNaam": "Breakfast Potatoes",
-        "mealImg": "https://www.themealdb.com/images/media/meals/1550441882.jpg",
-        "mealPrc": 276,
-        "mealQty": 1
+        "id": 1,
+        "price": 276,
+        "name": "Breakfast Potatoes",
+        "image_url": "https://www.themealdb.com/images/media/meals/1550441882.jpg",
     },
     {
-        "mealNaam": "Home-made Mandazi",
-        "mealImg": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg",
-        "mealPrc": 987,
-        "mealQty": 1
+        "id": 1,
+        "price": 987,
+        "name": "Home-made Mandazi",
+        "image_url": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg",
     },
     {
-        "mealNaam": "Smoked Haddock Kedgeree",
-        "mealImg": "https://www.themealdb.com/images/media/meals/1550441275.jpg",
-        "mealPrc": 395,
-        "mealQty": 1
+        "id": 1,
+        "price": 395,
+        "name": "Smoked Haddock Kedgeree",
+        "image_url": "https://www.themealdb.com/images/media/meals/1550441275.jpg",
     },
     {
-        "mealNaam": "Chicken Congee",
-        "mealImg": "https://www.themealdb.com/images/media/meals/1529446352.jpg",
-        "mealPrc": 735,
-        "mealQty": 1
+        "id": 1,
+        "price": 735,
+        "name": "Chicken Congee",
+        "image_url": "https://www.themealdb.com/images/media/meals/1529446352.jpg",
     },
     {
-        "mealNaam": "Chicken Enchilada Casserole",
-        "mealImg": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg",
-        "mealPrc": 350,
-        "mealQty": 1
+        "id": 1,
+        "price": 350,
+        "name": "Chicken Enchilada Casserole",
+        "image_url": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg",
     }
 ]

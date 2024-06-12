@@ -4,7 +4,7 @@ import BannerCard from "../Components/BannerCard";
 import ctList from "../../API/category.js";
 import ExploreMenu from "../Components/ExploreMenu.jsx";
 import MenuList from "../Components/ExploreMenu/MenuList.jsx";
-import cartItemsJS from "../../API/cartItemsJS.js";
+// import cartItemsJS from "../../API/cartItemsJS.js";
 
 export default function Home() {
   const [apiMenuData, setAPIMenuData] = useState([]);
@@ -12,8 +12,8 @@ export default function Home() {
   const [queryCount, setQueryCount] = useState(9);
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
-  const [cartItem, setCartItem] = useState([...cartItemsJS]);
-  console.log("CartItem : ", cartItem);
+  const [cartItem, setCartItem] = useState([]);
+  // const [cartItem, setCartItem] = useState(getLocalStorage() || []);
 
   // FetchedData Function Initialized
   const fetchMenuData = async () => {
@@ -24,24 +24,33 @@ export default function Home() {
       const result = await requests.json();
       // set API Fetched Data to state
       setAPIMenuData(result);
+      console.log("Home.jsx API Fetched");
     } catch (error) {
-      console.error("Error occurred : ", error);
+      console.error("Home.jsx Error occurred : ", error);
     }
   };
-
+  // run on first render
   useEffect(() => {
     fetchMenuData();
   }, []);
 
-  useEffect(() => {
-    // console.log(apiMenuData.length);
-  }, [apiMenuData]);
+  // getting Data from locaStorage
+  // function getLocalStorage() {
+  //   const getLocalCartInfo = JSON.parse(localStorage.getItem("localCart"));
+  //   if (getLocalCartInfo && getLocalCartInfo.length > 0) {
+  //     setCartItem([...getLocalCartInfo]);
+  //     console.log("Home.jsx Greater than 0");
+  //   } else {
+  //     console.log("Home.jsx No Data in Local Cart");
+  //   }
+  // }
 
   // useEffect fetching Menu Data
   useEffect(() => {
     if (apiMenuData && apiMenuData.length > queryCount) {
       setLoading(false);
     }
+    // console.log(cartItem);
   }, [apiMenuData]);
 
   function handleSearchValue(value) {

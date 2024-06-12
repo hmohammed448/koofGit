@@ -27,6 +27,31 @@ export default function ViewItem() {
     fetchIdData();
   }, [id]);
 
+  function setToLocalStorage() {
+    const getLocalCartInfo = JSON.parse(localStorage.getItem("localCart"));
+
+    // New object to push
+    const newObj = {
+      id: Number(id),
+      price: Number(price),
+      name: menuDetails?.strMeal,
+      image_url: menuDetails?.strMealThumb,
+    };
+
+    // if (!getLocalCartInfo) {
+    //   localStorage.setItem("localCart", JSON.stringify([newObj]));
+    //   alert("Item Added to Cart!");
+    //   return;
+    // } else {
+    //   let destructData = [...getLocalCartInfo, newObj];
+    //   localStorage.setItem("localCart", JSON.stringify(destructData));
+    //   alert("Item Added to Cart!");
+    //   return;
+    // }
+    console.log("Get local :", getLocalCartInfo);
+    // console.log(newObj);
+  }
+
   return (
     <>
       {loading ? (
@@ -34,7 +59,11 @@ export default function ViewItem() {
           <div className="loader my-24 mx-auto"></div>
         </center>
       ) : (
-        <ItemDetailedCard data={menuDetails} mealPrice={price} />
+        <ItemDetailedCard
+          data={menuDetails}
+          mealPrice={price}
+          handleAddingtoCart={setToLocalStorage}
+        />
       )}
     </>
   );

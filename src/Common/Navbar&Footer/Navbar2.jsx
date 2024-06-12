@@ -7,6 +7,7 @@ export default function Navbar2() {
 
   function toggleNavbarLinks() {
     setNavToggle(!navToggle);
+    console.log(navToggle);
   }
 
   return (
@@ -63,12 +64,12 @@ export default function Navbar2() {
           <div className="navbarAuthentication flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <Button
               rot={"#"}
-              addClass={"bg-orange-700 mobDisNone"}
+              addClass={"bg-orange-500 mobDisNone"}
               btnName={"Signup"}
             />
             <Button
               rot={"#"}
-              addClass={"bg-orange-700 mobDisNone"}
+              addClass={"bg-orange-500 mobDisNone"}
               btnName={"Login"}
             />
             <button
@@ -100,10 +101,15 @@ export default function Navbar2() {
           </div>
           {/* NAVBAR MIDDLE NAVLINKS */}
           <div
-            className={`navbarNavlinksSection items-center justify-between ${
-              navToggle ? "block" : "hidden"
-            } w-full md:flex md:w-auto md:order-1`}
+            className={`navbarNavlinksSection items-center justify-between 
+              ${
+                navToggle ? "block" : "hidden"
+              } w-full md:flex md:w-auto md:order-1`}
             id="navbar-sticky"
+            style={{
+              transition: "all 1s linear",
+              backgroundColor: "antiquewhite",
+            }}
           >
             <ul className="flex flex-row p-4 md:p-0 font-medium">
               <li>

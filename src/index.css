@@ -109,6 +109,13 @@ body {
     display: none !important;
 }
 
+
+
+/* .transNone {
+    opacity: 0 !important;
+    background-color: antiquewhite;
+} */
+
 @media screen and (min-width:642px) {
     .strContent {
         overflow-y: scroll;
@@ -128,6 +135,10 @@ body {
     .strContent::-webkit-scrollbar {
         display: none;
         /* Safari and Chrome */
+    }
+
+    #catItemTable table tbody tr td img {
+        width: 3rem !important;
     }
 
 }
@@ -311,5 +322,20 @@ body {
         top: 20px !important;
         right: 0px !important;
         left: auto !important;
+    }
+
+    #catItemTable {
+        width: 100% !important;
+        border-radius: 0.5rem !important;
+    }
+
+    #catItemTable table tbody tr td img {
+        max-width: 3rem !important;
+    }
+
+    .transBlock {
+        opacity: 1 !important;
+        transition: opacity 0.3s linear !important;
+        background-color: antiquewhite;
     }
 }
