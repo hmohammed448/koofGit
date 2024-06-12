@@ -13,7 +13,6 @@ export default function Home() {
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [cartItem, setCartItem] = useState([]);
-  // const [cartItem, setCartItem] = useState(getLocalStorage() || []);
 
   // FetchedData Function Initialized
   const fetchMenuData = async () => {
@@ -33,17 +32,6 @@ export default function Home() {
   useEffect(() => {
     fetchMenuData();
   }, []);
-
-  // getting Data from locaStorage
-  // function getLocalStorage() {
-  //   const getLocalCartInfo = JSON.parse(localStorage.getItem("localCart"));
-  //   if (getLocalCartInfo && getLocalCartInfo.length > 0) {
-  //     setCartItem([...getLocalCartInfo]);
-  //     console.log("Home.jsx Greater than 0");
-  //   } else {
-  //     console.log("Home.jsx No Data in Local Cart");
-  //   }
-  // }
 
   // useEffect fetching Menu Data
   useEffect(() => {
