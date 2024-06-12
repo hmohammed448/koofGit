@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Button from "../Components/Button";
 
@@ -7,12 +7,27 @@ export default function Navbar2() {
 
   function toggleNavbarLinks() {
     setNavToggle(!navToggle);
-    console.log(navToggle);
   }
+
+  function handleClickOutside(event) {
+    if (!event.target.closest(".navbar-container")) {
+      setNavToggle(false);
+    }
+  }
+  useEffect(() => {
+    if (navToggle) {
+      document.addEventListener("mouseout", handleClickOutside);
+    } else {
+      document.removeEventListener("mouseout", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mouseout", handleClickOutside);
+    };
+  }, [navToggle]);
 
   return (
     <>
-      <nav className="w-[100vw] bg-white sticky z-20 top-0 start-0 border-none">
+      <nav className="w-[100vw] bg-white sticky z-20 top-0 start-0 border-none navbar-container">
         <div className="w-[90%] flex flex-wrap items-center justify-between mx-auto px-8 ">
           {/* NAVBAR LOGO AREA */}
           <div className="navbarLogoSection">
@@ -60,7 +75,6 @@ export default function Navbar2() {
             </Link>
           </div>
           {/* LOGIN & SIGNUP */} {/* Authentication Buttons */}
-          {/* <div className="border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-white md:dark:bg-white dark:border-gray-700"> */}
           <div className="navbarAuthentication flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <Button
               rot={"#"}
@@ -162,7 +176,6 @@ export default function Navbar2() {
               />
             </ul>
           </div>
-          {/* </div> */}
         </div>
       </nav>
     </>
