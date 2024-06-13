@@ -42,9 +42,9 @@ export default function MenuList({
           {!loading && filteredMenuData.length >= queryCount ? (
             <div className="viewMoreBtn bg-orange-500 text-white px-8 py-4 rounded-md inline-table">
               <button
-                // onClick={() => {
-                //   setQueryCount(queryCount + 9);
-                // }}
+                onClick={() => {
+                  setQueryCount(queryCount + 9);
+                }}
               >
                 {/* View More */}
               </button>
