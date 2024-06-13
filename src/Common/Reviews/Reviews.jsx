@@ -14,11 +14,12 @@ import starterMenu from "../../assets/starterMenu.jpg";
 import veganMenu from "../../assets/veganMenu.jpg";
 import vegetarianMenu from "../../assets/vegetarianMenu.jpg";
 import ctList from "../../API/category.js";
-import Button from "../Components/Button.jsx";
 
 export default function Reviews() {
-  const [apiMenuData, setAPIMenuData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [localData, setLocalData] = useState([]);
+  const [inputValue, setInputValue] = useState(""); // Customer Review Field
+
   const [userComment, setUserComments] = useState([
     {
       postDate: "2024-05-02",
@@ -88,12 +89,49 @@ export default function Reviews() {
     vegetarianMenu,
   };
 
-  // useEffect fetching Menu Data
+  // setting reviews to Local storage for demo purpose
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    let localStorageInfo = JSON.parse(localStorage.getItem("reviews"));
+    if (!localStorageInfo) {
+      // demo comments if no data
+      let comm = [...userComment];
+      console.log("Demo Data saved : ", comm);
+      localStorage.setItem("reviews", JSON.stringify(comm));
+      return;
+    } else {
+      console.log("Data exist merged : ", localStorageInfo);
+      setLocalData(JSON.parse(localStorage.getItem("reviews")));
+    }
   }, []);
+
+  function handleAddComment() {
+    const newObj = {
+      postDate: "2024-05-02",
+      ratingByUser: 5.0,
+      profile_url:
+        "https://media.licdn.com/dms/image/D4D03AQHBWtOu21KNCw/profile-displayphoto-shrink_800_800/0/1695903639882?e=1723680000&v=beta&t=3lhu1x9ua6p7ZUWdEjZN2CtknKkB4-Z5AOWETiyqn3E",
+      userName: "Aman Jain",
+      userPosition: "CEO",
+      userComment: inputValue,
+    };
+
+    let localStorageInfo = JSON.parse(localStorage.getItem("reviews"));
+    if (!localStorageInfo) {
+      localStorage.setItem("reviews", JSON.stringify(newObj));
+      console.log("Data saved add button :");
+      return;
+    } else {
+      let destruct = [...localStorageInfo, newObj];
+      localStorage.setItem("reviews", JSON.stringify(destruct));
+      setLocalData(destruct);
+      console.log("Data exist add button settolocadata :");
+      return;
+    }
+  }
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 1500);
 
   return (
     <center className="bg-white text-black mt-8 mb-16 py-8">
@@ -103,7 +141,7 @@ export default function Reviews() {
           <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="1em"
             width="1em"
@@ -127,9 +165,16 @@ export default function Reviews() {
             placeholder="Write your review"
             className="p-4 bg-transparent border-none rounded-lg outline-orange-500"
             style={{ borderBottom: "1px solid gray" }}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           ></textarea>
         </div>
-        <Button addClass={"bg-orange-500"} btnName={"Submit"} />
+        <button
+          className="bg-orange-500 rounded-lg py-2 px-4 text-white hover:font-bold hover:shadow-lg"
+          onClick={handleAddComment}
+        >
+          Add
+        </button>
       </div>
 
       {/* If loaded show data setTimeout 1.5sec */}
@@ -151,9 +196,9 @@ export default function Reviews() {
               className="immagineParent max-w-[50%] px-4 my-4 flex items-center overflow-x-scroll scroll-smooth whitespace-nowrap gap-8"
               style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
             >
-              {ctList.map((el) => {
+              {ctList.map((el, idx) => {
                 return (
-                  <div className="immagine min-w-56 h-52 rounded-lg">
+                  <div key={idx} className="immagine min-w-56 h-52 rounded-lg">
                     <img
                       className="w-52 h-52 rounded-lg"
                       src={images[el.menu_image]}
@@ -170,7 +215,7 @@ export default function Reviews() {
             <div className="min-w-full px-8 py-4 bg-orange-500 rounded-t-lg text-white text-left text-2xl font-extrabold">
               Customer Reviews
             </div>
-            {userComment.map((el) => {
+            {localData?.map((el, idx) => {
               const {
                 ratingByUser: rating,
                 profile_url: profile,
@@ -180,7 +225,10 @@ export default function Reviews() {
               } = el;
 
               return (
-                <figure className="figSectionChild max-w-screen-md p-2 pt-0 bg-yellow-50 mb-3 border border-gray-400">
+                <figure
+                  key={idx}
+                  className="figSectionChild max-w-screen-md p-2 pt-0 bg-yellow-50 mb-3 border border-gray-400"
+                >
                   <figcaption className="flex items-center mt-6 mb-2 space-x-3 rtl:space-x-reverse">
                     <img
                       className="w-12 h-12 rounded-full object-cover"
