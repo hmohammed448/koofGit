@@ -124,7 +124,10 @@ export default function Reviews() {
   const datetime = generateDateTime();
 
   function handleAddComment() {
-    !inputValue && alert("Please Enter Value");
+    if (inputValue === "") {
+      alert("Please Enter Value");
+      return;
+    }
 
     const newObj = {
       postDate: datetime.getDate(),
