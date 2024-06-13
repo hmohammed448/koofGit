@@ -19,6 +19,57 @@ import Button from "../Components/Button.jsx";
 export default function Reviews() {
   const [apiMenuData, setAPIMenuData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [userComment, setUserComments] = useState([
+    {
+      postDate: "2024-05-02",
+      ratingByUser: 5.0,
+      profile_url:
+        "https://media.licdn.com/dms/image/D4D03AQHBWtOu21KNCw/profile-displayphoto-shrink_800_800/0/1695903639882?e=1723680000&v=beta&t=3lhu1x9ua6p7ZUWdEjZN2CtknKkB4-Z5AOWETiyqn3E",
+      userName: "Mohammed Hussain",
+      userPosition: "Manager",
+      userComment: "Perfect choice for your next SaaS application.",
+    },
+    {
+      postDate: "2024-04-23",
+      ratingByUser: 3.5,
+      profile_url:
+        "https://img.freepik.com/free-photo/smiley-father-posing-with-arms-crossed_23-2148414862.jpg?w=900",
+      userName: "Bonnie Green",
+      userPosition: "CTO at Flowbite",
+      userComment:
+        "The food quality was not up to the mark. Disappointed with the taste. I ordered sushi, and it tasted a bit off. The rice was too dry, and the fish didn't seem very fresh.",
+    },
+    {
+      postDate: "2024-04-19",
+      ratingByUser: 4.0,
+      profile_url:
+        "https://img.freepik.com/free-photo/portrait-happy-smiley-man_23-2149022624.jpg?w=900",
+      userName: "Amit",
+      userPosition: "Developer",
+      userComment:
+        "I'm impressed by the customer service. There was an issue with my order, but it was quickly resolved by the support team. The food itself was fantastic. I ordered their seafood platter and it was fresh and flavorful.",
+    },
+    {
+      postDate: "2024-04-15",
+      ratingByUser: 5.0,
+      profile_url:
+        "https://img.freepik.com/free-photo/young-determined-armenian-curlyhaired-female-university-student-listen-carefully-asignment-look-confident-ready-task-cross-hands-chest-smiling-selfassured-standing-white-background_176420-56066.jpg?w=900",
+      userName: "Sakshi Mehta",
+      userPosition: "Designer",
+      userComment:
+        "Amazing service! The food arrived hot and fresh. Will definitely order again. I tried their pasta dish, and it was divine. The sauce was rich and creamy, and the pasta was cooked to perfection.",
+    },
+    {
+      postDate: "2024-04-12",
+      ratingByUser: 3.0,
+      profile_url:
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png",
+      userName: "Anil Dubey",
+      userPosition: "Mechanic",
+      userComment:
+        "The food was okay, but the delivery took longer than expected. I ordered a burger and fries, and while the burger was decent, the fries were a bit soggy.",
+    },
+  ]);
 
   const images = {
     beefMenu,
@@ -37,35 +88,15 @@ export default function Reviews() {
     vegetarianMenu,
   };
 
-  // FetchedData Function Initialized
-  const fetchMenuData = async () => {
-    try {
-      const requests = await fetch(
-        `https://api.npoint.io/586fefa33a897bf5cbae`
-      );
-      const result = await requests.json();
-      // set API Fetched Data to state
-      setAPIMenuData(result);
-      console.log("Home.jsx API Fetched");
-    } catch (error) {
-      console.error("Home.jsx Error occurred : ", error);
-    }
-  };
-
-  // run on first render
-  useEffect(() => {
-    fetchMenuData();
-  }, []);
-
   // useEffect fetching Menu Data
   useEffect(() => {
-    if (apiMenuData && apiMenuData.length > 0) {
+    setTimeout(() => {
       setLoading(false);
-    }
-  }, [apiMenuData]);
+    }, 1000);
+  }, []);
 
   return (
-    <center className="bg-orange-200 text-black mt-8 mb-16 py-8">
+    <center className="bg-white text-black mt-8 mb-16 py-8">
       {/* Reviews */}
       <div className="flex justify-center items-center flex-row flex-wrap mb-8">
         <div>
@@ -101,24 +132,28 @@ export default function Reviews() {
         <Button addClass={"bg-orange-500"} btnName={"Submit"} />
       </div>
 
+      {/* If loaded show data setTimeout 1.5sec */}
       {loading ? (
         <center>
           <div className="loader my-24 mx-auto"></div>
         </center>
       ) : (
         <>
-          <div>
-            <h1 className="font-bold text-xl">Images From Our Customers</h1>
+          {/* Customers IMAGES */}
+          <div className="px-3">
+            <h1
+              className="font-bold text-3xl text-red-500 pb-4"
+              style={{ fontFamily: "'Pacifico', cursive" }}
+            >
+              Images From Our Customers 🥰
+            </h1>
             <div
-              className="max-w-[50%] px-4 my-4 flex justify-start items-center overflow-x-scroll scroll-smooth whitespace-nowrap gap-8"
+              className="immagineParent max-w-[50%] px-4 my-4 flex items-center overflow-x-scroll scroll-smooth whitespace-nowrap gap-8"
               style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
             >
               {ctList.map((el) => {
                 return (
-                  <div
-                    className="immagine min-w-56 h-52 rounded-lg"
-                    style={{ willChange: "transform" }}
-                  >
+                  <div className="immagine min-w-56 h-52 rounded-lg">
                     <img
                       className="w-52 h-52 rounded-lg"
                       src={images[el.menu_image]}
@@ -129,47 +164,62 @@ export default function Reviews() {
               })}
             </div>
           </div>
-          <div className="m-16">
 
+          {/* COMMENTS */}
+          <div className="m-16 max-w-[50%]" id="customReviews">
+            <div className="min-w-full px-8 py-4 bg-orange-500 rounded-t-lg text-white text-left text-2xl font-extrabold">
+              Customer Reviews
+            </div>
+            {userComment.map((el) => {
+              const {
+                ratingByUser: rating,
+                profile_url: profile,
+                userName: name,
+                userPosition: position,
+                userComment: comment,
+              } = el;
+
+              return (
+                <figure className="figSectionChild max-w-screen-md p-2 pt-0 bg-yellow-50 mb-3 border border-gray-400">
+                  <figcaption className="flex items-center mt-6 mb-2 space-x-3 rtl:space-x-reverse">
+                    <img
+                      className="w-12 h-12 rounded-full object-cover"
+                      src={profile}
+                      alt="profile picture"
+                    />
+                    <div className="citeFonts flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-700">
+                      <cite
+                        className="pe-3 text-xl font-semibold text-gray-900 dark:text-gray-700"
+                        style={{ textShadow: "1px 1px 2px white" }}
+                      >
+                        {name}
+                      </cite>
+                      <cite
+                        className="ps-3 text-sm text-gray-500 dark:text-gray-600"
+                        style={{ textShadow: "1px 1px 2px red" }}
+                      >
+                        {position}
+                      </cite>
+                    </div>
+                  </figcaption>
+                  <blockquote>
+                    <p
+                      style={{
+                        borderLeft: "5px solid gray",
+                        borderBottom: "1px solid gray",
+                        borderRadius: "0.5rem 0 0.2rem 1rem",
+                        paddingBottom: "0.5rem",
+                        lineHeight: "1.5",
+                      }}
+                      className="pl-2 text-lg font-medium text-left dark:text-gray-700"
+                    >
+                      {comment}
+                    </p>
+                  </blockquote>
+                </figure>
+              );
+            })}
           </div>
-          <figure className="max-w-screen-md px-8">
-            <figcaption className="flex items-center mt-6 mb-2 space-x-3 rtl:space-x-reverse">
-              <img
-                className="w-12 h-12 rounded-full"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                alt="profile picture"
-              />
-              <div className="citeFonts flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-700">
-                <cite
-                  className="pe-3 text-xl font-bold text-gray-900 dark:text-white"
-                  style={{ textShadow: "1px 1px 2px black" }}
-                >
-                  Bonnie Green
-                </cite>
-                <cite
-                  className="ps-3 text-sm text-gray-500 dark:text-gray-600"
-                  style={{ textShadow: "1px 1px 2px red" }}
-                >
-                  CTO at Flowbite
-                </cite>
-              </div>
-            </figcaption>
-            <blockquote>
-              <p
-                style={{
-                  borderLeft: "3px solid lightgray",
-                  borderBottom: "1px solid lightgray",
-                  paddingBottom: "0.5rem",
-                  lineHeight: "1.5",
-                }}
-                className="pl-2 text-lg font-medium text-left dark:text-gray-700"
-              >
-                "Flowbite is just awesome. It contains tons of predesigned
-                components and pages starting from login screen to complex
-                dashboard. Perfect choice for your next SaaS application."
-              </p>
-            </blockquote>
-          </figure>
         </>
       )}
     </center>
