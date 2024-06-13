@@ -40,14 +40,15 @@ export default function MenuList({
         <div className="w-full mt-4 text-center">
           {/* if Count is 0 and loading not done don't show View More button */}
           {!loading && filteredMenuData.length >= queryCount ? (
-            <button
-              className="bg-orange-500 text-white px-8 py-4"
-              onClick={() => {
-                setQueryCount(queryCount + 9);
-              }}
-            >
-              View More
-            </button>
+            <div className="viewMoreBtn bg-orange-500 text-white px-8 py-4 rounded-md inline-table">
+              <button
+                // onClick={() => {
+                //   setQueryCount(queryCount + 9);
+                // }}
+              >
+                {/* View More */}
+              </button>
+            </div>
           ) : (
             <div
               className="bg-gray-400 text-white font-bold text-3xl px-8 py-2 rounded-lg"

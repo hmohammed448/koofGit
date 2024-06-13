@@ -40,7 +40,7 @@ export default function FoodCard({ data }) {
     <>
       <div
         key={key}
-        className="w-full relative max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-white dark:border-gray-300"
+        className="foodCard w-full relative max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-white dark:border-gray-300"
       >
         <NavLink to={`viewItem/${mealId}/${Number(mealPrice)}`}>
           <img
@@ -49,13 +49,10 @@ export default function FoodCard({ data }) {
             alt="product_image"
           />
         </NavLink>
-        <div className="px-5 my-4">
-          <div href="#">
-            <h5 className="nameEllipses">{mealName}</h5>
-          </div>
-
+        <div className="foodCardContent px-5 my-4">
+          <h5 className="nameEllipses">{mealName}</h5>
           {/* Free Delivery - 15-30 mins */}
-          <div className="flex justify-start items-center mb-2">
+          <div className="flex justify-start items-center flex-row flex-wrap mb-2">
             <div className="freeDelivery text-gray-500 flex justify-start items-center mr-4">
               <svg
                 stroke="currentColor"
@@ -98,14 +95,17 @@ export default function FoodCard({ data }) {
           </div>
           {/*  */}
 
-          <div className="flex justify-start items-start flex-col gap-4">
-            <div className=" text-gray-500 text-lg font-bold pr-2.5 py-0.5 ">
-              <span className="text-orange-500">Price:</span> ₹
-              {Number(mealPrice)}
-              /serving
+          {/* Meal Price */}
+          <div className="foodCardContentPrice flex justify-start items-start flex-col gap-4">
+            <div className=" text-gray-500 text-lg flex flex-row flex-nowrap font-bold pr-2.5 py-0.5">
+              <span className="text-orange-500">Price: </span>&nbsp;
+              <span className="text-gray-500">
+                ₹{mealPrice}
+                /serving
+              </span>
             </div>
           </div>
-          <div className="flex items-center justify-between mt-2">
+          <div className="foodCardContentBtnParent flex items-center justify-between mt-2">
             <span
               className="foodCodeSpan text-xs absolute font-bold text-gray-900 px-2 py-1"
               style={{
@@ -120,7 +120,7 @@ export default function FoodCard({ data }) {
             </span>
             {/* ADD TO CART BUTTON */}
             <button
-              className="text-white bg-red-600 hover:bg-red-700 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              className="foodCardContentBtn text-white bg-red-600 hover:bg-red-700 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               onClick={setToLocalStorage}
             >
               Add to Cart
@@ -128,7 +128,7 @@ export default function FoodCard({ data }) {
             {/* VIEW CART BUTTON */}
             <Button
               rot={"cart"}
-              addClass={"bg-orange-500"}
+              addClass={"bg-orange-500 foodCardContentBtn"}
               btnName={"ViewCart"}
             />
           </div>

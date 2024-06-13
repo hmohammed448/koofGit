@@ -75,7 +75,7 @@ export default function ItemDetailedCard({
           <hr className="border-2 rounded-xl" />
           <div className="flex items-center justify-between py-4">
             <button
-              className="text-white tracking-widest p-4 bg-red-700 font-bold rounded-lg text-sm text-center dark:bg-red-600 dark:hover:bg-red-700"
+              className="viewItemAddBtn text-white tracking-widest p-4 bg-red-700 font-bold rounded-lg text-sm text-center dark:bg-red-600 dark:hover:bg-red-700"
               onClick={() => handleAddingtoCart(data.idMeal)}
             >
               ADD TO CART
