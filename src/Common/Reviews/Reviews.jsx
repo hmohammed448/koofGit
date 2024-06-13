@@ -100,11 +100,9 @@ export default function Reviews() {
     if (!localStorageInfo) {
       // demo comments if no data
       let comm = [...userComment];
-      console.log("Demo Data saved : ", comm);
       localStorage.setItem("reviews", JSON.stringify(comm));
       return;
     } else {
-      console.log("Data exist merged : ", localStorageInfo);
       setLocalData(JSON.parse(localStorage.getItem("reviews")));
     }
   }, []);
@@ -126,6 +124,8 @@ export default function Reviews() {
   const datetime = generateDateTime();
 
   function handleAddComment() {
+    !inputValue && alert("Please Enter Value");
+
     const newObj = {
       postDate: datetime.getDate(),
       postTime: datetime.getTime(),
@@ -140,13 +140,12 @@ export default function Reviews() {
     let localStorageInfo = JSON.parse(localStorage.getItem("reviews"));
     if (!localStorageInfo) {
       localStorage.setItem("reviews", JSON.stringify(newObj));
-      console.log("Data saved add button :");
       return;
     } else {
       let destruct = [...localStorageInfo, newObj];
       localStorage.setItem("reviews", JSON.stringify(destruct));
       setLocalData(destruct);
-      console.log("Data exist add button settolocadata :");
+      setInputValue("");
       return;
     }
   }
@@ -154,6 +153,12 @@ export default function Reviews() {
   setTimeout(() => {
     setLoading(false);
   }, 1500);
+
+  const sortedArray = localData?.sort((a, b) => {
+    const dateA = new Date(`${a.postDate} ${a.postTime}`);
+    const dateB = new Date(`${b.postDate} ${b.postTime}`);
+    return dateB - dateA;
+  });
 
   return (
     <center className="bg-white text-black mt-8 mb-16 py-8">
@@ -192,7 +197,7 @@ export default function Reviews() {
           ></textarea>
         </div>
         <button
-          className="bg-orange-500 rounded-lg py-2 px-4 text-white hover:font-bold hover:shadow-lg"
+          className="addCommentBtn bg-orange-500 rounded-lg py-2 px-4 text-white hover:font-bold hover:shadow-lg"
           onClick={handleAddComment}
         >
           Add
@@ -237,78 +242,72 @@ export default function Reviews() {
             <div className="min-w-full px-4 py-2 bg-orange-500 rounded-t-lg text-white text-left text-2xl font-extrabold">
               Customer Reviews
             </div>
-            {localData
-              ?.sort((a, b) => {
-                const dateA = new Date(`${a.postDate} ${a.postTime}`);
-                const dateB = new Date(`${b.postDate} ${b.postTime}`);
-                return dateB - dateA;
-              })
-              ?.map((el, idx) => {
-                const {
-                  postDate: userPostDate,
-                  postTime: userPostTime,
-                  ratingByUser: rating,
-                  profile_url: profile,
-                  userName: name,
-                  userPosition: position,
-                  userComment: comment,
-                } = el;
+            {sortedArray?.map((el, idx) => {
+              const {
+                postDate: userPostDate,
+                postTime: userPostTime,
+                ratingByUser: rating,
+                profile_url: profile,
+                userName: name,
+                userPosition: position,
+                userComment: comment,
+              } = el;
 
-                return (
-                  <figure
-                    key={idx}
-                    className="figSectionChild w-full p-2 pt-0 bg-sky-50 mb-3 border border-gray-400"
-                  >
-                    <figcaption className="flex items-center mt-6 mb-2 space-x-3 rtl:space-x-reverse">
-                      <img
-                        className="w-12 h-12 rounded-full object-cover"
-                        src={profile}
-                        alt="profile picture"
-                      />
-                      <div className=" flex flex-col items-start">
-                        {/* Name and Position */}
-                        <div className="citeFonts divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-500">
-                          <cite
-                            className="pe-3 text-xl font-semibold text-gray-900 dark:text-gray-700"
-                            style={{ textShadow: "1px 1px 2px white" }}
-                          >
-                            {name}
-                          </cite>
-                          <cite
-                            className="ps-3 text-sm text-gray-500 dark:text-gray-600"
-                            style={{ textShadow: "1px 1px 2px red" }}
-                          >
-                            {position}
-                          </cite>
-                        </div>
-                        {/* Date and time */}
-                        <div className="divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-300">
-                          <span className="pr-3 text-xs text-gray-400">
-                            {userPostDate}
-                          </span>
-                          <span className="pl-3 text-xs  text-gray-400">
-                            {userPostTime}
-                          </span>
-                        </div>
+              return (
+                <figure
+                  key={idx}
+                  className="figSectionChild w-full p-2 pt-0 bg-sky-50 mb-3 border border-gray-400"
+                >
+                  <figcaption className="flex items-center mt-6 mb-2 space-x-3 rtl:space-x-reverse">
+                    <img
+                      className="w-12 h-12 rounded-full object-cover"
+                      src={profile}
+                      alt="profile picture"
+                    />
+                    <div className=" flex flex-col items-start">
+                      {/* Name and Position */}
+                      <div className="citeFonts divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-500">
+                        <cite
+                          className="pe-3 text-xl font-semibold text-gray-900 dark:text-gray-700"
+                          style={{ textShadow: "1px 1px 2px white" }}
+                        >
+                          {name}
+                        </cite>
+                        <cite
+                          className="ps-3 text-sm text-gray-500 dark:text-gray-600"
+                          style={{ textShadow: "1px 1px 2px red" }}
+                        >
+                          {position}
+                        </cite>
                       </div>
-                    </figcaption>
-                    <blockquote>
-                      <p
-                        style={{
-                          borderLeft: "5px solid gray",
-                          borderBottom: "1px solid gray",
-                          borderRadius: "0.5rem 0 0.2rem 1rem",
-                          paddingBottom: "0.5rem",
-                          lineHeight: "1.5",
-                        }}
-                        className="pl-2 text-lg font-medium text-left dark:text-gray-700"
-                      >
-                        {comment}
-                      </p>
-                    </blockquote>
-                  </figure>
-                );
-              })}
+                      {/* Date and time */}
+                      <div className="divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-300">
+                        <span className="pr-3 text-xs text-gray-400">
+                          {userPostDate}
+                        </span>
+                        <span className="pl-3 text-xs  text-gray-400">
+                          {userPostTime}
+                        </span>
+                      </div>
+                    </div>
+                  </figcaption>
+                  <blockquote>
+                    <p
+                      style={{
+                        borderLeft: "5px solid gray",
+                        borderBottom: "1px solid gray",
+                        borderRadius: "0.5rem 0 0.2rem 1rem",
+                        paddingBottom: "0.5rem",
+                        lineHeight: "1.5",
+                      }}
+                      className="pl-2 text-lg font-medium text-left dark:text-gray-700"
+                    >
+                      {comment}
+                    </p>
+                  </blockquote>
+                </figure>
+              );
+            })}
           </div>
         </>
       )}

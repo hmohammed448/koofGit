@@ -124,6 +124,7 @@ body {
     content: "View More";
 }
 
+.addCommentBtn:hover,
 .viewItemAddBtn:hover,
 .foodCardContentBtn:hover,
 .viewMoreBtn:hover {
@@ -132,6 +133,7 @@ body {
     box-shadow: 5px 5px 10px rgba(17, 12, 46, 0.3);
 }
 
+.addCommentBtn:active,
 .viewItemAddBtn:active,
 .foodCardContentBtn:active,
 .viewMoreBtn:active {
