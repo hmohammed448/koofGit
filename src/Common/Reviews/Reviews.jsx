@@ -23,6 +23,7 @@ export default function Reviews() {
   const [userComment, setUserComments] = useState([
     {
       postDate: "2024-05-02",
+      postTime: "19:48:34",
       ratingByUser: 5.0,
       profile_url:
         "https://media.licdn.com/dms/image/D4D03AQHBWtOu21KNCw/profile-displayphoto-shrink_800_800/0/1695903639882?e=1723680000&v=beta&t=3lhu1x9ua6p7ZUWdEjZN2CtknKkB4-Z5AOWETiyqn3E",
@@ -31,27 +32,19 @@ export default function Reviews() {
       userComment: "Perfect choice for your next SaaS application.",
     },
     {
-      postDate: "2024-04-23",
-      ratingByUser: 3.5,
+      postDate: "2024-03-26",
+      postTime: "11:48:34",
+      ratingByUser: 3.0,
       profile_url:
-        "https://img.freepik.com/free-photo/smiley-father-posing-with-arms-crossed_23-2148414862.jpg?w=900",
-      userName: "Bonnie Green",
-      userPosition: "CTO at Flowbite",
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png",
+      userName: "Anil Dubey",
+      userPosition: "Mechanic",
       userComment:
-        "The food quality was not up to the mark. Disappointed with the taste. I ordered sushi, and it tasted a bit off. The rice was too dry, and the fish didn't seem very fresh.",
-    },
-    {
-      postDate: "2024-04-19",
-      ratingByUser: 4.0,
-      profile_url:
-        "https://img.freepik.com/free-photo/portrait-happy-smiley-man_23-2149022624.jpg?w=900",
-      userName: "Amit",
-      userPosition: "Developer",
-      userComment:
-        "I'm impressed by the customer service. There was an issue with my order, but it was quickly resolved by the support team. The food itself was fantastic. I ordered their seafood platter and it was fresh and flavorful.",
+        "The food was okay, but the delivery took longer than expected. I ordered a burger and fries, and while the burger was decent, the fries were a bit soggy.",
     },
     {
       postDate: "2024-04-15",
+      postTime: "19:08:34",
       ratingByUser: 5.0,
       profile_url:
         "https://img.freepik.com/free-photo/young-determined-armenian-curlyhaired-female-university-student-listen-carefully-asignment-look-confident-ready-task-cross-hands-chest-smiling-selfassured-standing-white-background_176420-56066.jpg?w=900",
@@ -61,14 +54,26 @@ export default function Reviews() {
         "Amazing service! The food arrived hot and fresh. Will definitely order again. I tried their pasta dish, and it was divine. The sauce was rich and creamy, and the pasta was cooked to perfection.",
     },
     {
-      postDate: "2024-04-12",
-      ratingByUser: 3.0,
+      postDate: "2024-04-19",
+      postTime: "12:48:34",
+      ratingByUser: 4.0,
       profile_url:
-        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png",
-      userName: "Anil Dubey",
-      userPosition: "Mechanic",
+        "https://img.freepik.com/free-photo/portrait-happy-smiley-man_23-2149022624.jpg?w=900",
+      userName: "Amit",
+      userPosition: "Developer",
       userComment:
-        "The food was okay, but the delivery took longer than expected. I ordered a burger and fries, and while the burger was decent, the fries were a bit soggy.",
+        "I'm impressed by the customer service. There was an issue with my order, but it was quickly resolved by the support team. The food itself was fantastic. I ordered their seafood platter and it was fresh and flavorful.",
+    },
+    {
+      postDate: "2024-04-23",
+      postTime: "02:24:34",
+      ratingByUser: 3.5,
+      profile_url:
+        "https://img.freepik.com/free-photo/smiley-father-posing-with-arms-crossed_23-2148414862.jpg?w=900",
+      userName: "Bonnie Green",
+      userPosition: "CTO at Flowbite",
+      userComment:
+        "The food quality was not up to the mark. Disappointed with the taste. I ordered sushi, and it tasted a bit off. The rice was too dry, and the fish didn't seem very fresh.",
     },
   ]);
 
@@ -104,14 +109,36 @@ export default function Reviews() {
     }
   }, []);
 
+  const generateDateTime = () => {
+    const dt = new Date();
+    return {
+      getTime: () => {
+        // time
+        // let tim = dt.toLocaleTimeString();
+        // let time = tim.split(" ");
+        // return time.toString();
+        return dt.toISOString().split("T")[1].split(".")[0]; // "HH:MM:SS"
+      },
+      getDate: () => {
+        // let dat = dt.toJSON();
+        // let date = dat.split(" ");
+        // return date.toString().slice(0, 10);
+        return dt.toISOString().split("T")[0]; // "YYYY-MM-DD"
+      },
+    };
+  };
+  // Ask current Date and time
+  const datetime = generateDateTime();
+
   function handleAddComment() {
     const newObj = {
-      postDate: "2024-05-02",
+      postDate: datetime.getDate(),
+      postTime: datetime.getTime(),
       ratingByUser: 5.0,
       profile_url:
-        "https://media.licdn.com/dms/image/D4D03AQHBWtOu21KNCw/profile-displayphoto-shrink_800_800/0/1695903639882?e=1723680000&v=beta&t=3lhu1x9ua6p7ZUWdEjZN2CtknKkB4-Z5AOWETiyqn3E",
-      userName: "Aman Jain",
-      userPosition: "CEO",
+        "https://cdn3.iconfinder.com/data/icons/seo-black-fill-5/128/Custom_user_profile_Account-512.png",
+      userName: "Username",
+      userPosition: "Guest",
       userComment: inputValue,
     };
 
@@ -215,58 +242,80 @@ export default function Reviews() {
             <div className="min-w-full px-8 py-4 bg-orange-500 rounded-t-lg text-white text-left text-2xl font-extrabold">
               Customer Reviews
             </div>
-            {localData?.map((el, idx) => {
-              const {
-                ratingByUser: rating,
-                profile_url: profile,
-                userName: name,
-                userPosition: position,
-                userComment: comment,
-              } = el;
+            {localData
+              ?.sort(
+                (a, b) => {
+                  const dateA = new Date(`${a.postDate} ${a.postTime}`);
+                  const dateB = new Date(`${b.postDate} ${b.postTime}`);
+                  return dateB - dateA;
+                }
+              )
+              ?.map((el, idx) => {
+                const {
+                  postDate: userPostDate,
+                  postTime: userPostTime,
+                  ratingByUser: rating,
+                  profile_url: profile,
+                  userName: name,
+                  userPosition: position,
+                  userComment: comment,
+                } = el;
 
-              return (
-                <figure
-                  key={idx}
-                  className="figSectionChild max-w-screen-md p-2 pt-0 bg-yellow-50 mb-3 border border-gray-400"
-                >
-                  <figcaption className="flex items-center mt-6 mb-2 space-x-3 rtl:space-x-reverse">
-                    <img
-                      className="w-12 h-12 rounded-full object-cover"
-                      src={profile}
-                      alt="profile picture"
-                    />
-                    <div className="citeFonts flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-700">
-                      <cite
-                        className="pe-3 text-xl font-semibold text-gray-900 dark:text-gray-700"
-                        style={{ textShadow: "1px 1px 2px white" }}
+                return (
+                  <figure
+                    key={idx}
+                    className="figSectionChild max-w-screen-md p-2 pt-0 bg-yellow-50 mb-3 border border-gray-400"
+                  >
+                    <figcaption className="flex items-center mt-6 mb-2 space-x-3 rtl:space-x-reverse">
+                      <img
+                        className="w-12 h-12 rounded-full object-cover"
+                        src={profile}
+                        alt="profile picture"
+                      />
+                      <div className=" flex flex-col items-start">
+                        {/* Name and Position */}
+                        <div className="citeFonts divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-500">
+                          <cite
+                            className="pe-3 text-xl font-semibold text-gray-900 dark:text-gray-700"
+                            style={{ textShadow: "1px 1px 2px white" }}
+                          >
+                            {name}
+                          </cite>
+                          <cite
+                            className="ps-3 text-sm text-gray-500 dark:text-gray-600"
+                            style={{ textShadow: "1px 1px 2px red" }}
+                          >
+                            {position}
+                          </cite>
+                        </div>
+                        {/* Date and time */}
+                        <div className="divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-300">
+                          <span className="pr-3 text-xs text-gray-400">
+                            {userPostDate}
+                          </span>
+                          <span className="pl-3 text-xs  text-gray-400">
+                            {userPostTime}
+                          </span>
+                        </div>
+                      </div>
+                    </figcaption>
+                    <blockquote>
+                      <p
+                        style={{
+                          borderLeft: "5px solid gray",
+                          borderBottom: "1px solid gray",
+                          borderRadius: "0.5rem 0 0.2rem 1rem",
+                          paddingBottom: "0.5rem",
+                          lineHeight: "1.5",
+                        }}
+                        className="pl-2 text-lg font-medium text-left dark:text-gray-700"
                       >
-                        {name}
-                      </cite>
-                      <cite
-                        className="ps-3 text-sm text-gray-500 dark:text-gray-600"
-                        style={{ textShadow: "1px 1px 2px red" }}
-                      >
-                        {position}
-                      </cite>
-                    </div>
-                  </figcaption>
-                  <blockquote>
-                    <p
-                      style={{
-                        borderLeft: "5px solid gray",
-                        borderBottom: "1px solid gray",
-                        borderRadius: "0.5rem 0 0.2rem 1rem",
-                        paddingBottom: "0.5rem",
-                        lineHeight: "1.5",
-                      }}
-                      className="pl-2 text-lg font-medium text-left dark:text-gray-700"
-                    >
-                      {comment}
-                    </p>
-                  </blockquote>
-                </figure>
-              );
-            })}
+                        {comment}
+                      </p>
+                    </blockquote>
+                  </figure>
+                );
+              })}
           </div>
         </>
       )}

@@ -119,6 +119,9 @@ body {
 .figSectionChild {
     filter: drop-shadow(0px 5px 5px black);
 }
+.citeFonts{
+    
+}
 
 @media screen and (min-width:642px) {
     .strContent {
