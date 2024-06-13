@@ -1,9 +1,21 @@
 # FoodCart APP
+![Home Page](./src/assets/logoFoodCart.png)
 
 ## Description
+
 FoodCart is a responsive food delivery application built using ReactJS. It leverages the power of modern React features such as components, hooks (`useState`, `useEffect`, and `useRef`) to create a seamless user experience for ordering food online.
 
+## Screenshots
+
+Here are some screenshots of the FoodCart app:
+![Home Page](./src/assets/foodcartHome.png)
+![Home Page](./src/assets/reviews.png)
+![Home Page](./src/assets/cart.png)
+![Home Page](./src/assets/productDetailedPage.png)
+![Home Page](./src/assets/emptycart.png)
+
 ## Features
+
 - **Food Item Display**: Browse through various food items with detailed descriptions and prices.
 - **Food Item Description**: View detailed information about each food item.
 - **Videos**: Watch videos if you want to make the food at home.
@@ -17,36 +29,42 @@ FoodCart is a responsive food delivery application built using ReactJS. It lever
 - **Order Placement**: Place orders easily through the app.
 
 ## Technologies Used
+
 - **ReactJS**: Core library for building the user interface.
 - **Tailwind CSS**: Utility-first CSS framework for styling.
 - **Fetch API**: For making HTTP requests to fetch data.
 
 ## Installation
+
 To get started with FoodCart, follow these steps:
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/your-username/foodcart.git
+   ```
 2. **Navigate to the project directory:**
-    ```cd foodcart
+   ```bash
+   cd foodcart
+   ```
 3. **Install dependencies:**
-    ```npm install
+   ```bash
+   npm install
+   ```
 4. **Start the development server:**
-    ```npm start
-
+   ```bash
+   npm start
+   ```
 
 ## Usage
-After starting the development server, open your browser and navigate to - [Live server]( `http://localhost:5173` ) to start using FoodCart. Browse through the available food items, add them to your cart, and proceed to checkout.
 
-Alternatively, you can visit the deployed application at: 
-- [FoodCart APP Live Website](https://koof-git.vercel.app/) 
+After starting the development server, open your browser and navigate to - [Live server](`http://localhost:5173`) to start using FoodCart. Browse through the available food items, add them to your cart, and proceed to checkout.
 
-## Screenshots
-Here are some screenshots of the FoodCart app:
-![description](./src/assets/)
+Alternatively, you can visit the deployed application at:
 
+- [FoodCart APP Live Website](https://koof-git.vercel.app/)
 
 ## Components
+
 - **HOME**: The main landing page of the application.
 - **Navbar**: Navigation bar with links to different sections of the app.
 - **Footer**: Provides additional information and links.
@@ -59,23 +77,25 @@ Here are some screenshots of the FoodCart app:
 - **OrderSearch**: Search functionality for fast orders.
 - **ExploreMenu**: Explore different menu categories and items.
 
-
-
 ## Optimization Techniques
+
 - **State Management**: Efficient use of useState for managing component states.
 - **Functions**: Modular functions to handle various operations within the app.
 - **Timeout Handling**: Use of setTimeout for handling delayed actions and enhancing user experience.
 
 ## Development Timeline
+
 This project took 5 days to complete.
 
 ## Contributing
+
 We welcome contributions from the community! If you would like to contribute to FoodCart, please follow these guidelines:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
-4. Commit your changes and push your branch to GitHub.
-5. Open a pull request and describe your changes.
+3. Commit your changes and push your branch to GitHub.
+4. Open a pull request and describe your changes.
 
 ## Contact
+
 If you need any recipes or have any questions, feel free to contact us at: [hmohammed448@gmail.com]
