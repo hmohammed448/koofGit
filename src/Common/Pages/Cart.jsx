@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import CartView from "../Cart/CartView";
-import Button from "../Components/Button";
+import CheckOutCart from "../../assets/checkout.gif";
 
 export default function Cart() {
   const [localData, setLocalData] = useState([]);
   const [totalBill, setTotalBill] = useState(0);
+  const [totalBillQty, setTotalBillQty] = useState(0);
   const [tableFoot, setTableFoot] = useState(false);
 
   // getting Data from locaStorage
@@ -29,7 +30,9 @@ export default function Cart() {
     let total = localData
       .map((el) => el.price)
       .reduce((accum, curr) => Number(accum) + Number(curr), 0);
+    let totalQty = localData.reduce((accum) => Number(accum) + 1, 0);
     setTotalBill(total);
+    setTotalBillQty(totalQty);
   }
 
   // localData updates render below
@@ -102,28 +105,36 @@ export default function Cart() {
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 style={{ backgroundColor: "rgb(249 115 22)" }}
               >
-                <td className="flex justify-center px-4 py-3"></td>
-                {/* Name */}
-                <td className="px-6 py-3 font-black text-white text-right">
-                  TOTAL Bill :
+                <td
+                  className="flex justify-center px-4 py-3"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                >
+                  <img
+                    className="w-12 h-12 rounded-full"
+                    src={CheckOutCart}
+                    alt=""
+                  />
                 </td>
+                {/* Name */}
+                <td className="px-6 py-3 font-black text-white items-center">
+                  <span>TOTAL Bill :</span>
+                </td>
+                {/* Total Quantity */}
                 <td className="px-2 py-3">
                   <p className="w-20 mx-auto text-center text-white font-black border border-white text-sm bg-gray-700 rounded-md px-2 py-1">
-                    1
+                    {totalBillQty}
                   </p>
                 </td>
                 {/* PRICE */}
                 <td className="px-6 py-3">
                   <p className="w-20 mx-auto text-center text-white font-black border border-white text-sm bg-gray-700 rounded-md px-2 py-1">
-                    $ {totalBill}
+                    ₹ {totalBill}
                   </p>
                 </td>
-                <td className="py-3 px-2 text-center">
-                  {/* <Button
-                    // addClass={"bg-red-700 border border-white"}
-                    // btnName={"Thank You"}
-                  ></Button> */}
-                </td>
+                <td className="py-3 px-2 text-center"></td>
               </tr>
             </tfoot>
           )}

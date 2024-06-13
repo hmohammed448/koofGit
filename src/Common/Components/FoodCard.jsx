@@ -34,7 +34,6 @@ export default function FoodCard({ data }) {
       <div
         key={key}
         className="w-full relative max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-white dark:border-gray-300"
-        data-aos="zoom-in"
       >
         <NavLink to={`viewItem/${mealId}/${Number(mealPrice)}`}>
           <img
@@ -94,7 +93,7 @@ export default function FoodCard({ data }) {
 
           <div className="flex justify-start items-start flex-col gap-4">
             <div className=" text-gray-500 text-lg font-bold pr-2.5 py-0.5 ">
-              <span className="text-orange-500">Price:</span> $
+              <span className="text-orange-500">Price:</span> ₹
               {Number(mealPrice)}
               /serving
             </div>

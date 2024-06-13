@@ -1,6 +1,7 @@
 import React from "react";
 import paymentImage from "../../assets/paymentImage.svg";
 import trustCart from "../../assets/trustCart.svg";
+import Button from "./Button";
 
 export default function ItemDetailedCard({
   data,
@@ -44,7 +45,7 @@ export default function ItemDetailedCard({
           </div>
           <div className="flex items-center justify-between mb-2">
             <span className="text-3xl font-bold text-gray-900">
-              ${mealPrice}
+              ₹{mealPrice}
             </span>
           </div>
           <hr className="border-2 rounded-xl" />
@@ -62,17 +63,27 @@ export default function ItemDetailedCard({
           <hr className="border-2 rounded-xl" />
           <div className="flex items-center justify-between py-4">
             <span className="text-xs font-thin text-gray-800">
-              Prime members get an extra discount of $60 and FREE shipping.
+              Prime members get an extra discount of{" "}
+              <del className="text-lg font-medium">&#2352;</del>60 and FREE
+              shipping.
+              <br />
+              <span className="text-blue-400 underline text-[xx-small]">
+                (Terms & conditions apply.)
+              </span>
             </span>
           </div>
           <hr className="border-2 rounded-xl" />
           <div className="flex items-center justify-between py-4">
             <button
-              className="text-white tracking-widest py-4 bg-red-700 font-bold rounded-lg text-sm px-5 text-center dark:bg-red-600 dark:hover:bg-red-700"
+              className="text-white tracking-widest p-4 bg-red-700 font-bold rounded-lg text-sm text-center dark:bg-red-600 dark:hover:bg-red-700"
               onClick={() => handleAddingtoCart(data.idMeal)}
             >
               ADD TO CART
             </button>
+            <Button
+              addClass={"bg-orange-500 tracking-widest py-4"}
+              btnName={"View Cart"}
+            />
           </div>
           <div className="flex items-center justify-between py-4">
             <span className="w-24 text-center font-light text-xs break-words text-gray-400">

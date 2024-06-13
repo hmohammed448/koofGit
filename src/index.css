@@ -352,4 +352,8 @@ body {
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
+    .citeFonts cite{
+        font-size: 12px !important;
+    }
 }
