@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 export default function CartView({ data, setItemRemoved }) {
-  const { key, mealId, mealPrc, mealNaam, mealImg } = data;
+  const { key, mealId, mealQty, mealPrc, mealNaam, mealImg } = data;
 
   return (
     <>
@@ -22,14 +22,15 @@ export default function CartView({ data, setItemRemoved }) {
         <td className="px-6 py-2 font-semibold text-gray-900 dark:text-white">
           {mealNaam}
         </td>
+        {/* Quantity */}
         <td className="px-2 py-2">
           <p className="w-20 mx-auto text-center border border-orange-500 text-sm rounded-lg block px-2 py-1 dark:bg-gray-700 dark:text-white">
-            1
+            {mealQty}
           </p>
         </td>
         {/* PRICE */}
         <td className="px-6 py-2 font-semibold text-gray-900 dark:text-white text-center">
-          {mealPrc}
+          {mealPrc * mealQty}
         </td>
         <td className="px-6 py-2 text-center">
           <button

@@ -27,28 +27,34 @@ export default function ViewItem() {
     fetchIdData();
   }, [id]);
 
+  // New object to push
+  const newObj = {
+    id: Number(id),
+    qty: 1,
+    price: Number(price),
+    name: menuDetails?.strMeal,
+    image_url: menuDetails?.strMealThumb,
+  };
+
   function setToLocalStorage() {
     const getLocalCartInfo = JSON.parse(localStorage.getItem("localCart"));
-
-    // New object to push
-    const newObj = {
-      id: Number(id),
-      price: Number(price),
-      name: menuDetails?.strMeal,
-      image_url: menuDetails?.strMealThumb,
-    };
-
-    if (!getLocalCartInfo) {
+    // Local does not exist or length is 0
+    if (!getLocalCartInfo || getLocalCartInfo.length === 0) {
       localStorage.setItem("localCart", JSON.stringify([newObj]));
-      console.log("Get local :", getLocalCartInfo);
-      alert("Item Added to Cart!");
-      return;
+      alert("First item added to Cart!");
+      return; // Get out first item added and localStorage created
+    }
+
+    const itemIndex = getLocalCartInfo.findIndex((el) => el.id === newObj.id);
+
+    if (itemIndex !== -1) {
+      getLocalCartInfo[itemIndex].qty += 1;
+      localStorage.setItem("localCart", JSON.stringify(getLocalCartInfo));
+      alert(`Item quantity updated: ${getLocalCartInfo[itemIndex].qty}`);
     } else {
-      let destructData = [...getLocalCartInfo, newObj];
-      localStorage.setItem("localCart", JSON.stringify(destructData));
-      console.log("Get local :", getLocalCartInfo);
-      alert("Item Added to Cart!");
-      return;
+      const newItemtoCart = [...getLocalCartInfo, newObj];
+      localStorage.setItem("localCart", JSON.stringify(newItemtoCart));
+      alert("Item added to Cart!");
     }
   }
 

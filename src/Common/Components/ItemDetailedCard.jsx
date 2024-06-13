@@ -81,6 +81,7 @@ export default function ItemDetailedCard({
               ADD TO CART
             </button>
             <Button
+              rot={"/cart"}
               addClass={"bg-orange-500 tracking-widest py-4"}
               btnName={"View Cart"}
             />

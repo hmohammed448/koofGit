@@ -14,6 +14,7 @@ import starterMenu from "../../assets/starterMenu.jpg";
 import veganMenu from "../../assets/veganMenu.jpg";
 import vegetarianMenu from "../../assets/vegetarianMenu.jpg";
 import ctList from "../../API/category.js";
+import Mohdicon from "../../assets/mohdicon.jpeg";
 
 export default function Reviews() {
   const [loading, setLoading] = useState(true);
@@ -25,8 +26,7 @@ export default function Reviews() {
       postDate: "2024-05-02",
       postTime: "19:48:34",
       ratingByUser: 5.0,
-      profile_url:
-        "https://media.licdn.com/dms/image/D4D03AQHBWtOu21KNCw/profile-displayphoto-shrink_800_800/0/1695903639882?e=1723680000&v=beta&t=3lhu1x9ua6p7ZUWdEjZN2CtknKkB4-Z5AOWETiyqn3E",
+      profile_url: Mohdicon,
       userName: "Mohammed Hussain",
       userPosition: "Manager",
       userComment: "Perfect choice for your next SaaS application.",
@@ -114,15 +114,10 @@ export default function Reviews() {
     return {
       getTime: () => {
         // time
-        // let tim = dt.toLocaleTimeString();
-        // let time = tim.split(" ");
-        // return time.toString();
         return dt.toISOString().split("T")[1].split(".")[0]; // "HH:MM:SS"
       },
       getDate: () => {
-        // let dat = dt.toJSON();
-        // let date = dat.split(" ");
-        // return date.toString().slice(0, 10);
+        // date
         return dt.toISOString().split("T")[0]; // "YYYY-MM-DD"
       },
     };
@@ -163,7 +158,7 @@ export default function Reviews() {
   return (
     <center className="bg-white text-black mt-8 mb-16 py-8">
       {/* Reviews */}
-      <div className="flex justify-center items-center flex-row flex-wrap mb-8">
+      <div className="addReviewArea flex justify-center items-center flex-row flex-wrap mb-8">
         <div>
           <svg
             stroke="currentColor"
@@ -225,9 +220,9 @@ export default function Reviews() {
             >
               {ctList.map((el, idx) => {
                 return (
-                  <div key={idx} className="immagine min-w-56 h-52 rounded-lg">
+                  <div key={idx} className="immagine min-w-24 h-24 rounded-lg">
                     <img
-                      className="w-52 h-52 rounded-lg"
+                      className="w-full h-full rounded-lg"
                       src={images[el.menu_image]}
                       alt=""
                     />
@@ -238,18 +233,16 @@ export default function Reviews() {
           </div>
 
           {/* COMMENTS */}
-          <div className="m-16 max-w-[50%]" id="customReviews">
-            <div className="min-w-full px-8 py-4 bg-orange-500 rounded-t-lg text-white text-left text-2xl font-extrabold">
+          <div className="m-16 max-w-[70%]" id="customReviews">
+            <div className="min-w-full px-4 py-2 bg-orange-500 rounded-t-lg text-white text-left text-2xl font-extrabold">
               Customer Reviews
             </div>
             {localData
-              ?.sort(
-                (a, b) => {
-                  const dateA = new Date(`${a.postDate} ${a.postTime}`);
-                  const dateB = new Date(`${b.postDate} ${b.postTime}`);
-                  return dateB - dateA;
-                }
-              )
+              ?.sort((a, b) => {
+                const dateA = new Date(`${a.postDate} ${a.postTime}`);
+                const dateB = new Date(`${b.postDate} ${b.postTime}`);
+                return dateB - dateA;
+              })
               ?.map((el, idx) => {
                 const {
                   postDate: userPostDate,
@@ -264,7 +257,7 @@ export default function Reviews() {
                 return (
                   <figure
                     key={idx}
-                    className="figSectionChild max-w-screen-md p-2 pt-0 bg-yellow-50 mb-3 border border-gray-400"
+                    className="figSectionChild w-full p-2 pt-0 bg-sky-50 mb-3 border border-gray-400"
                   >
                     <figcaption className="flex items-center mt-6 mb-2 space-x-3 rtl:space-x-reverse">
                       <img

@@ -5,27 +5,34 @@ import Button from "../Components/Button";
 export default function FoodCard({ data }) {
   // Object Destructuring
   const { key, mealId, mealPrice, mealName, mealImage } = data;
+  // new item object
+  const newObj = {
+    id: mealId,
+    qty: 1,
+    price: mealPrice,
+    name: mealName,
+    image_url: mealImage,
+  };
 
   function setToLocalStorage() {
     const getLocalCartInfo = JSON.parse(localStorage.getItem("localCart"));
-
-    // New object to push
-    const newObj = {
-      id: mealId,
-      price: mealPrice,
-      name: mealName,
-      image_url: mealImage,
-    };
-
-    if (!getLocalCartInfo) {
+    // Local does not exist or length is 0
+    if (!getLocalCartInfo || getLocalCartInfo.length === 0) {
       localStorage.setItem("localCart", JSON.stringify([newObj]));
-      alert("Item Added to Cart!");
-      return;
+      alert("First item added to Cart!");
+      return; // Get out first item added and localStorage created
+    }
+
+    const itemIndex = getLocalCartInfo.findIndex((el) => el.id === newObj.id);
+
+    if (itemIndex !== -1) {
+      getLocalCartInfo[itemIndex].qty += 1;
+      localStorage.setItem("localCart", JSON.stringify(getLocalCartInfo));
+      alert(`Item quantity updated: ${getLocalCartInfo[itemIndex].qty}`);
     } else {
-      let destructData = [...getLocalCartInfo, newObj];
-      localStorage.setItem("localCart", JSON.stringify(destructData));
-      alert("Item Added to Cart!");
-      return;
+      const newItemtoCart = [...getLocalCartInfo, newObj];
+      localStorage.setItem("localCart", JSON.stringify(newItemtoCart));
+      alert("Item added to Cart!");
     }
   }
 

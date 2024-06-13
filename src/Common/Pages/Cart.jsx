@@ -27,10 +27,14 @@ export default function Cart() {
 
   // calculateBill
   function calculateBill() {
+    let totalQty = localData
+      .map((el) => el.qty)
+      .reduce((accum, curr) => (accum += Number(curr)), 0);
     let total = localData
-      .map((el) => el.price)
+      .map((el) => el.price * el.qty)
       .reduce((accum, curr) => Number(accum) + Number(curr), 0);
-    let totalQty = localData.reduce((accum) => Number(accum) + 1, 0);
+
+    console.log(totalQty);
     setTotalBill(total);
     setTotalBillQty(totalQty);
   }
@@ -88,9 +92,9 @@ export default function Cart() {
                 data={{
                   key: index,
                   mealId: item.id,
+                  mealQty: item.qty,
                   mealNaam: item.name,
                   mealPrc: item.price,
-                  // mealQty: item.mealQty,
                   mealImg: item.image_url,
                 }}
                 setItemRemoved={setItemRemoved}
