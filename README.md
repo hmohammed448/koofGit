@@ -1,4 +1,5 @@
 # FoodCart APP
+
 ![Home Page](./src/assets/logoFoodCart.png)
 
 ## Description
