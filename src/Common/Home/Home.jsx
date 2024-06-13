@@ -37,7 +37,6 @@ export default function Home() {
     if (apiMenuData && apiMenuData.length > queryCount) {
       setLoading(false);
     }
-    // console.log(cartItem);
   }, [apiMenuData]);
 
   function handleSearchValue(value) {

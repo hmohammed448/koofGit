@@ -120,10 +120,6 @@ body {
     filter: drop-shadow(0px 5px 5px black);
 }
 
-.viewMoreBtn::before {
-    content: "View More";
-}
-
 .addCommentBtn:hover,
 .viewItemAddBtn:hover,
 .foodCardContentBtn:hover,
