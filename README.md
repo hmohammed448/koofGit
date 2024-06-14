@@ -9,10 +9,19 @@ FoodCart is a responsive food delivery application built using ReactJS. It lever
 ## Screenshots
 
 Here are some screenshots of the FoodCart app:
+**HOME PAGE**
 ![Home Page](./src/assets/foodcartHome.png)
+
+**REVIEWS PAGE**
 ![Home Page](./src/assets/reviews.png)
+
+**CART PAGE**
 ![Home Page](./src/assets/cart.png)
+
+**PRODUCT DETAILED PAGE**
 ![Home Page](./src/assets/productDetailedPage.png)
+
+**EMPTY CART**
 ![Home Page](./src/assets/emptycart.png)
 
 ## Features
@@ -99,4 +108,4 @@ We welcome contributions from the community! If you would like to contribute to 
 
 ## Contact
 
-If you need any recipes or have any questions, feel free to contact us at: [hmohammed448@gmail.com]
+If you need anything or have any questions, feel free to contact us at: [hmohammed448@gmail.com]
