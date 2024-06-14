@@ -108,4 +108,4 @@ We welcome contributions from the community! If you would like to contribute to 
 
 ## Contact
 
-If you need anything or have any questions, feel free to contact us at: [hmohammed448@gmail.com]
+If you have any questions, feel free to contact us at: [hmohammed448@gmail.com]
