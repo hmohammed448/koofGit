@@ -143,7 +143,7 @@ body {
     .strContent {
         overflow-y: scroll;
         min-height: 1px !important;
-        max-height: 90vh !important;
+        max-height: 98vh !important;
     }
 
     .categorySection,
