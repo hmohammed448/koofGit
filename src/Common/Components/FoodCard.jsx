@@ -40,7 +40,7 @@ export default function FoodCard({ data }) {
     <>
       <div
         key={key}
-        className="foodCard w-full relative max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-white dark:border-gray-300"
+        className="foodCard w-full relative max-w-sm bg-white border border-gray-200 rounded-2xl dark:bg-white dark:border-gray-300"
       >
         <NavLink to={`viewItem/${mealId}/${Number(mealPrice)}`}>
           <img
